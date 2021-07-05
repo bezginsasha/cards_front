@@ -1,0 +1,14 @@
+.search {
+	display: block;
+	width: 690px;
+	margin: 25px auto;
+	padding: 3px;
+	border: none;
+	box-shadow: 0 0 10px 2px #adadad;
+}
+.search:focus {
+	outline: none;
+}
+.search:hover {
+	box-shadow: 0 0 10px 5px #adadad;
+}
