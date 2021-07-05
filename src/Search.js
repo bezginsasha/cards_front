@@ -1,6 +1,6 @@
-import './App.css';
+import './Search.css';
 
-function App() {
+function Search() {
 	return (
 		<div className="App">
 			<input type="text" class="search" placeholder="Search"/>
@@ -8,4 +8,4 @@ function App() {
 	);
 }
 
-export default App;
+export default Search;
