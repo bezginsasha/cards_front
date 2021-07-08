@@ -1,0 +1,16 @@
+* {
+	font-size: 18px;
+	font-family: 'Nunito', sans-serif;
+	color: #4c4c4c;
+}
+
+.container {
+	width: 700px;
+	margin: auto;
+}
+
+.header {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 15px;
+}
