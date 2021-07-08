@@ -1,0 +1,7 @@
+.word-list-item {
+	width: 600px;
+	margin: 15px auto;
+	padding: 4px 10px;
+	border: 1px #dedede solid;
+	background: #f7f7f7;
+}

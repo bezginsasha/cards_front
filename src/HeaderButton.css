@@ -1,0 +1,9 @@
+.header-button {
+	margin: 0px 15px;
+	padding: 2px 15px;
+	background: #e2e2e2;
+	border: none;
+}
+.header-button:hover {
+	background: #d4d4d4;
+}

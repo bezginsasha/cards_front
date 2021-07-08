@@ -1,0 +1,36 @@
+.over-form {
+	width: 450px;
+	margin: 100px auto;
+	background: #f7f7f7;
+	border: 1px black solid;
+	padding: 0 15px 10px;
+}
+.over-form:first-child {
+	text-align: center;
+}
+
+.over-form-input, .over-input-textarea {
+	padding: 3px 10px;
+	margin-bottom: 10px;
+	border: 1px #dedede solid;
+}
+.over-form-input:focus, .over-input-textarea:focus {
+	outline: none;
+}
+
+.over-form-input {
+	width: 225px;
+}
+.over-input-textarea {
+	width: 350px;
+}
+
+.over-form-button {
+	margin-bottom: 10px;
+	padding: 2px 15px;
+	background: #e2e2e2;
+	border: none;
+}
+.over-form-button:hover {
+	background: #d4d4d4;
+}
