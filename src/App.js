@@ -51,4 +51,35 @@ class App extends React.Component {
 	}
 }
 
+function getJSXFormByName(form) {
+		var currentForm;
+
+		switch (form) {
+			case FORMS.newWord:
+				currentForm = <NewWordForm />
+				break;
+			case FORMS.game:
+				currentForm = <GameForm />
+				break;
+			case FORMS.account:
+				currentForm = <AccountForm />
+				break;
+			case FORMS.help:
+				currentForm = <HelpForm />
+				break;
+			default:
+				currentForm = null
+		}
+
+		if (currentForm) {
+			currentForm = (
+				<OverContainer>
+					{ currentForm }
+				</OverContainer>
+			);
+		}
+
+		return currentForm;
+}
+
 export default App
