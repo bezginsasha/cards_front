@@ -24,18 +24,27 @@ export const FORMS = {
 class App extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			currentForm: FORMS.none
+		};
+	}
+
+	headerButtonHandler = (event, form) => {
+		this.setState({
+			currentForm: form
+		})
 	}
 
 	render() {
 		return(
 			<React.Fragment>
 				<section className="header" >
-					<HeaderButton buttonValue="New word" />
-					<HeaderButton buttonValue="Game" />
-					<HeaderButton buttonValue="Piles" />
-					<HeaderButton buttonValue="Help" />
-					<HeaderButton buttonValue="Import" />
-					<HeaderButton buttonValue="Account" />
+					<HeaderButton form={ FORMS.newWord } handler={ this.headerButtonHandler } />
+					<HeaderButton form={ FORMS.game } handler={ this.headerButtonHandler } />
+					<HeaderButton form={ FORMS.piles } handler={ this.headerButtonHandler } />
+					<HeaderButton form={ FORMS.help } handler={ this.headerButtonHandler } />
+					<HeaderButton form={ FORMS.import } handler={ this.headerButtonHandler } />
+					<HeaderButton form={ FORMS.account } handler={ this.headerButtonHandler } />
 				</section>
 				<hr />
 				<Search />
@@ -43,9 +52,7 @@ class App extends React.Component {
 				<WordListItem wordValue="School" />
 				<WordListItem wordValue="Magic" />
 
-				<OverContainer>
-					<HelpForm />
-				</OverContainer>
+				{ getJSXFormByName(this.state.currentForm) }
 			</React.Fragment>
 		)
 	}
