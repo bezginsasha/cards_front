@@ -8,3 +8,9 @@
 	width: 700px;
 	margin: auto;
 }
+
+.header {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 15px;
+}
