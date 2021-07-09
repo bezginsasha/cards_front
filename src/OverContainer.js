@@ -8,7 +8,7 @@ class OverContainer extends React.Component {
 
 	render() {
 		return (
-		<section class="over-container">
+		<section className="over-container">
 			{ this.props.children }
 		</section>
 		);

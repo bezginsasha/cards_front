@@ -8,12 +8,12 @@ class NewWordForm extends React.Component {
 
 	render() {
 		return (
-			<div class="over-form">
+			<div className="over-form">
 				<p>New word</p>
-				<textarea class="over-input-textarea" placeholder="Original word" rows="3"></textarea>
-				<textarea class="over-input-textarea" placeholder="Translated word with context" rows="3"></textarea>
+				<textarea className="over-input-textarea" placeholder="Original word" rows="3"></textarea>
+				<textarea className="over-input-textarea" placeholder="Translated word with context" rows="3"></textarea>
 				<br />
-				<input type="button" value="Save" class="over-form-button" />
+				<input type="button" value="Save" className="over-form-button" />
 			</div>
 		);
 	}

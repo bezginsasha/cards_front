@@ -8,7 +8,7 @@ class WordListItem extends React.Component {
 
 	render() {
 		return (
-			<p class="word-list-item">{ this.props.wordValue }</p>
+			<p className="word-list-item">{ this.props.wordValue }</p>
 		);
 	}
 }

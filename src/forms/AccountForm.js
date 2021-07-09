@@ -8,13 +8,13 @@ class AccountForm extends React.Component {
 
 	render() {
 		return (
-			<div class="over-form">
+			<div className="over-form">
 				<p>Account</p>
-				<input type="text" class="over-form-input" placeholder="Username" />
-				<input type="text" class="over-form-input" placeholder="Password" />
+				<input type="text" className="over-form-input" placeholder="Username" />
+				<input type="text" className="over-form-input" placeholder="Password" />
 				<br />
-				<input type="button" value="Sign In" class="over-form-button" />
-				<input type="button" value="Sign Up" class="over-form-button" />
+				<input type="button" value="Sign In" className="over-form-button" />
+				<input type="button" value="Sign Up" className="over-form-button" />
 			</div>
 		);
 	}

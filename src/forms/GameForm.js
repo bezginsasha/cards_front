@@ -8,12 +8,12 @@ class GameForm extends React.Component {
 
 	render() {
 		return (
-			<div class="over-form">
+			<div className="over-form">
 				<p>Game</p>
 				<p>kunteynir</p>
-				<input type="button" value="Easy" class="over-form-button" />
-				<input type="button" value="Show" class="over-form-button" />
-				<input type="button" value="Hard" class="over-form-button" />
+				<input type="button" value="Easy" className="over-form-button" />
+				<input type="button" value="Show" className="over-form-button" />
+				<input type="button" value="Hard" className="over-form-button" />
 			</div>
 		);
 	}
