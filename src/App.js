@@ -32,7 +32,7 @@ class App extends React.Component {
 	headerButtonHandler = (event, form) => {
 		this.setState({
 			currentForm: form
-		})
+		});
 	}
 
 	render() {
