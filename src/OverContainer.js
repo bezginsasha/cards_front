@@ -8,7 +8,7 @@ class OverContainer extends React.Component {
 
 	clickHandler = () => {
 		this.props.clickHandler();
-	}
+	};
 
 	render() {
 		return (

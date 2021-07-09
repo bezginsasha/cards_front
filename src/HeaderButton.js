@@ -8,7 +8,7 @@ class HeaderButton extends React.Component {
 
 	handler = (event) => {
 		this.props.handler(event, this.props.form);
-	}
+	};
 
 	render() {
 		return (

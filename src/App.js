@@ -33,13 +33,13 @@ class App extends React.Component {
 		this.setState({
 			currentForm: form
 		});
-	}
+	};
 
 	overContainerClickHandler = (event) => {
 		this.setState({
 			currentForm: FORMS.none
 		});
-	}
+	};
 
 	render() {
 		var currentForm = getJSXFormByName(this.state.currentForm);
@@ -79,16 +79,16 @@ function getJSXFormByName(form) {
 
 		switch (form) {
 			case FORMS.newWord:
-				currentForm = <NewWordForm />
+				currentForm = <NewWordForm />;
 				break;
 			case FORMS.game:
-				currentForm = <GameForm />
+				currentForm = <GameForm />;
 				break;
 			case FORMS.account:
-				currentForm = <AccountForm />
+				currentForm = <AccountForm />;
 				break;
 			case FORMS.help:
-				currentForm = <HelpForm />
+				currentForm = <HelpForm />;
 				break;
 			default:
 				currentForm = null
