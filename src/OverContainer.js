@@ -6,9 +6,13 @@ class OverContainer extends React.Component {
 		super(props);
 	}
 
+	clickHandler = () => {
+		this.props.clickHandler();
+	}
+
 	render() {
 		return (
-		<section className="over-container">
+		<section className="over-container" onClick={ this.clickHandler }>
 			{ this.props.children }
 		</section>
 		);

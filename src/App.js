@@ -35,7 +35,23 @@ class App extends React.Component {
 		});
 	}
 
+	overContainerClickHandler = (event) => {
+		this.setState({
+			currentForm: FORMS.none
+		});
+	}
+
 	render() {
+		var currentForm = getJSXFormByName(this.state.currentForm);
+
+		if (currentForm) {
+			currentForm = (
+				<OverContainer clickHandler={ this.overContainerClickHandler } >
+					{ currentForm }
+				</OverContainer>
+			);
+		}
+
 		return(
 			<React.Fragment>
 				<section className="header" >
@@ -52,7 +68,7 @@ class App extends React.Component {
 				<WordListItem wordValue="School" />
 				<WordListItem wordValue="Magic" />
 
-				{ getJSXFormByName(this.state.currentForm) }
+				{ currentForm }
 			</React.Fragment>
 		)
 	}
@@ -78,15 +94,6 @@ function getJSXFormByName(form) {
 				currentForm = null
 		}
 
-		if (currentForm) {
-			currentForm = (
-				<OverContainer>
-					{ currentForm }
-				</OverContainer>
-			);
-		}
-
 		return currentForm;
 }
-
 export default App
