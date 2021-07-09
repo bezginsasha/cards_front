@@ -64,9 +64,9 @@ class App extends React.Component {
 				</section>
 				<hr />
 				<Search />
-				<WordListItem wordValue="Word" />
-				<WordListItem wordValue="School" />
-				<WordListItem wordValue="Magic" />
+				<WordListItem value="Word" />
+				<WordListItem value="School" />
+				<WordListItem value="Magic" />
 
 				{ currentForm }
 			</React.Fragment>
