@@ -5,6 +5,7 @@ import Search from './Search';
 import HeaderButton from './HeaderButton';
 import WordListItem from './WordListItem';
 import OverContainer from './OverContainer';
+import Pipe from './Pipe'
 
 import NewWordForm from './forms/NewWordForm';
 import AccountForm from './forms/AccountForm';
@@ -64,6 +65,7 @@ class App extends React.Component {
 				</section>
 				<hr />
 				<Search />
+				<Pipe value="test pipe" />
 				<WordListItem value="Word" />
 				<WordListItem value="School" />
 				<WordListItem value="Magic" />

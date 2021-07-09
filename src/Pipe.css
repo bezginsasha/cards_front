@@ -1,0 +1,10 @@
+.pipe {
+    border: 1px #ebebeb solid;
+    background: none;
+    border-radius: 20px;
+    margin: 0 5px;
+    padding: 3px 13px;
+}
+.pipe:hover {
+    background: #f0f0f0;
+}
