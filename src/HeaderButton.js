@@ -6,13 +6,13 @@ class HeaderButton extends React.Component {
 		super(props);
 	}
 
-	handler = (event) => {
+	clickHandler = (event) => {
 		this.props.handler(event, this.props.form);
 	};
 
 	render() {
 		return (
-			<input type="button" className="header-button" value={ this.props.form } onClick={ this.handler } />
+			<input type="button" className="header-button" value={ this.props.form } onClick={ this.clickHandler } />
 		);
 	}
 }
