@@ -28,6 +28,8 @@ class NewWordForm extends React.Component {
                 data => console.log(data)
             )
         );
+
+		this.props.closeForm();
 	};
 
 	originalWordInputHandler = (event) => {

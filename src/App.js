@@ -42,6 +42,11 @@ class App extends React.Component {
 		});
 	};
 
+	closeForm = () => {
+	    this.setState({
+			currentForm: FORMS.none,
+	    });
+	};
 	render() {
 		var currentForm = null;
 
