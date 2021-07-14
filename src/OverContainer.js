@@ -12,7 +12,7 @@ class OverContainer extends React.Component {
 
 	render() {
 		return (
-		<section className="over-container" onClick={ this.clickHandler }>
+		<section className="over-container" onMouseDown={ this.clickHandler }>
 			{ this.props.children }
 		</section>
 		);
