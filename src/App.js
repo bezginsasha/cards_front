@@ -43,7 +43,24 @@ class App extends React.Component {
 	};
 
 	render() {
-		var currentForm = getJSXFormByName(this.state.currentForm);
+		var currentForm = null;
+
+		switch (this.state.currentForm) {
+			case FORMS.newWord:
+				currentForm = <NewWordForm closeForm={ this.closeForm } />;
+				break;
+			case FORMS.game:
+				currentForm = <GameForm />;
+				break;
+			case FORMS.account:
+				currentForm = <AccountForm />;
+				break;
+			case FORMS.help:
+				currentForm = <HelpForm />;
+				break;
+			default:
+				currentForm = null
+		}
 
 		if (currentForm) {
 			currentForm = (
@@ -76,26 +93,4 @@ class App extends React.Component {
 	}
 }
 
-function getJSXFormByName(form) {
-		var currentForm;
-
-		switch (form) {
-			case FORMS.newWord:
-				currentForm = <NewWordForm />;
-				break;
-			case FORMS.game:
-				currentForm = <GameForm />;
-				break;
-			case FORMS.account:
-				currentForm = <AccountForm />;
-				break;
-			case FORMS.help:
-				currentForm = <HelpForm />;
-				break;
-			default:
-				currentForm = null
-		}
-
-		return currentForm;
-}
 export default App
