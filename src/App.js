@@ -3,7 +3,7 @@ import './index.css';
 
 import Search from './Search';
 import HeaderButton from './HeaderButton';
-import WordListItem from './WordListItem';
+import WordList from './WordList';
 import OverContainer from './OverContainer';
 import Pipe from './Pipe'
 
@@ -104,10 +104,7 @@ class App extends React.Component {
 				<hr />
 				<Search />
 				<Pipe value="test pipe" />
-				<WordListItem value="Word" />
-				<WordListItem value="School" />
-				<WordListItem value="Magic" />
-
+				<WordList cards={ this.state.cards } />
 				{ currentForm }
 			</React.Fragment>
 		)
