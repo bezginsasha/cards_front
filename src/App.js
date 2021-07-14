@@ -26,7 +26,8 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentForm: FORMS.none
+			currentForm: FORMS.none,
+			cards: null
 		};
 	}
 
@@ -47,6 +48,21 @@ class App extends React.Component {
 			currentForm: FORMS.none,
 	    });
 	};
+
+	componentDidMount = () => {
+        fetch('http://localhost:5000', {
+            method: 'POST',
+            headers: {
+                Origin: 'http://localhost:3000'
+            },
+        })
+        .then(
+            response => response.json().then(
+                data => {this.setState({ cards: data }); console.log(data); }
+            )
+        );
+	};
+
 	render() {
 		var currentForm = null;
 
