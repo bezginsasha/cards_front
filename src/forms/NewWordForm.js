@@ -10,7 +10,25 @@ class NewWordForm extends React.Component {
 		    translatedWord: ''
 		}
 	}
-	}
+
+	submitHandler = () => {
+		var form = new FormData();
+		form.set('original_word', this.state.originalWord);
+		form.set('translated_word', this.state.translatedWord);
+
+        fetch('http://localhost:5000/add', {
+            method: 'POST',
+            headers: {
+                Origin: 'http://localhost:3000/'
+            },
+            body: form
+        })
+        .then(
+            response => response.json().then(
+                data => console.log(data)
+            )
+        );
+	};
 
 	originalWordInputHandler = (event) => {
 	    this.setState({
@@ -20,7 +38,7 @@ class NewWordForm extends React.Component {
 
 	translatedWordInputHandler = (event) => {
 	    this.setState({
-	        tranlatedValue: event.target.value
+	        translatedWord: event.target.value
 	    })
 	};
 
@@ -44,7 +62,12 @@ class NewWordForm extends React.Component {
 				    rows="3"
 				/>
 				<br />
-				<input type="button" value="Save" className="over-form-button" />
+				<input
+				    onClick={ this.submitHandler }
+				    type="button"
+				    value="Save"
+				    className="over-form-button"
+                />
 			</OverForm>
 		);
 	}
