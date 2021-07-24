@@ -1,20 +1,14 @@
 import React from 'react';
 import './HeaderButton.css';
 
-class HeaderButton extends React.Component {
-	constructor(props) {
-		super(props);
+function HeaderButton(props) {
+	function clickHandler(event) {
+		props.handler(event, props.form);
 	}
 
-	clickHandler = (event) => {
-		this.props.handler(event, this.props.form);
-	};
-
-	render() {
-		return (
-			<input type="button" className="header-button" value={ this.props.form } onClick={ this.clickHandler } />
-		);
-	}
+    return (
+        <input type="button" className="header-button" value={ props.form } onClick={ clickHandler } />
+    );
 }
 
 export default HeaderButton;

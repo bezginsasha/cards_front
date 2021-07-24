@@ -1,26 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Search.css';
 
-class Search extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			value: ''
-		};
-	}
+function Search() {
+    var [ value, setValue ] = useState('');
 
-	inputHandler = (event) => {
+	function inputHandler(event) {
 		event.preventDefault();
-		this.setState({
-			value: event.target.value
-		});
-	};
-
-	render() {
-		return (
-			<input type="text" className="search" placeholder="Search" value={ this.state.value } onInput={ this.inputHandler } />
-		);
+		setValue(event.target.value);
 	}
+
+    return (
+        <input type="text" className="search" placeholder="Search" value={ value } onInput={ inputHandler } />
+    );
 }
 
 export default Search;

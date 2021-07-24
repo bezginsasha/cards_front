@@ -1,16 +1,10 @@
 import React from 'react'
 import './Pipe.css'
 
-class Pipe extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <input type="button" className="pipe" value={ this.props.value } />
-        )
-    }
+function Pipe(props) {
+    return (
+        <input type="button" className="pipe" value={ props.value } />
+    )
 }
 
 export default Pipe;
