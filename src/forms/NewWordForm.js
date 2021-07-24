@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './CommonForm.css';
 import OverForm from './OverForm'
 
 import { insertCard } from '../features/cards/cardsSlice'
+import { updateOriginalWord, updateTranslatedWord } from '../features/inputWords/inputWordsSlice'
 
 function NewWordForm(props) {
-	var [ originalWord, setOriginalWord ] = useState('');
-	var [ translatedWord, setTranslatedWord ] = useState('');
 	var dispatch = useDispatch();
+	var originalWord = useSelector(state => state.inputWords.originalWord);
+	var translatedWord = useSelector(state => state.inputWords.translatedWord);
 
 	function submitHandler() {
 		if (!originalWord || !translatedWord)
@@ -44,11 +45,11 @@ function NewWordForm(props) {
 	}
 
 	function originalWordInputHandler(event) {
-		setOriginalWord(event.target.value);
+		dispatch(updateOriginalWord(event.target.value));
 	}
 
 	function translatedWordInputHandler(event) {
-		setTranslatedWord(event.target.value);
+		dispatch(updateTranslatedWord(event.target.value));
 	}
 
 	return (
