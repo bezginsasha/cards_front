@@ -56,8 +56,6 @@ function App() {
         );
 	}, []);
 
-	console.log(cards);
-	
 	var currentFormElement = null;
 	
     switch (currentForm) {
