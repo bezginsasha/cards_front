@@ -8,10 +8,13 @@ const cardsSlice = createSlice({
 	reducers: {
 		initiateCards: (state, action) => {
 			state.push(...action.payload);
+		},
+		insertCard: (state, action) => {
+			state.push(action.payload);
 		}
 	}
 });
 
-export const { initiateCards } = cardsSlice.actions;
+export const { initiateCards, insertCard } = cardsSlice.actions;
 
 export default cardsSlice.reducer

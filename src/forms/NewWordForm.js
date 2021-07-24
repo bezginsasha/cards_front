@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
 import './CommonForm.css';
 import OverForm from './OverForm'
+
+import { insertCard } from '../features/cards/cardsSlice'
 
 function NewWordForm(props) {
 	var [ originalWord, setOriginalWord ] = useState('');
 	var [ translatedWord, setTranslatedWord ] = useState('');
+	var dispatch = useDispatch();
 
 	function submitHandler() {
 		var form = new FormData();
@@ -20,7 +24,16 @@ function NewWordForm(props) {
 		})
 		.then(
 			response => response.json().then(
-				data => console.log(data)
+				data => {
+					console.log(data.id);
+					var card = {
+						id: data.id,
+						original_word: originalWord,
+						translated_word: translatedWord
+					};
+
+					dispatch(insertCard(card));
+				}
 			)
 		);
 
