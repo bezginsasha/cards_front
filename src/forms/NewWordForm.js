@@ -11,6 +11,9 @@ function NewWordForm(props) {
 	var dispatch = useDispatch();
 
 	function submitHandler() {
+		if (!originalWord || !translatedWord)
+			return;
+
 		var form = new FormData();
 		form.set('original_word', originalWord);
 		form.set('translated_word', translatedWord);
