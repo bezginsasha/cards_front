@@ -3,13 +3,13 @@ import { createSlice } from '@reduxjs/toolkit'
 var initialState = [];
 
 const cardsSlice = createSlice({
-    name: 'cards',
-    initialState,
-    reducers: {
-        initiateCards: (state, action) => {
-            state.push(...action.payload);
-        }
-    }
+	name: 'cards',
+	initialState,
+	reducers: {
+		initiateCards: (state, action) => {
+			state.push(...action.payload);
+		}
+	}
 });
 
 export const { initiateCards } = cardsSlice.actions;

@@ -6,9 +6,14 @@ function HeaderButton(props) {
 		props.handler(event, props.form);
 	}
 
-    return (
-        <input type="button" className="header-button" value={ props.form } onClick={ clickHandler } />
-    );
+	return (
+		<input
+			type="button"
+			className="header-button"
+			value={ props.form }
+			onClick={ clickHandler }
+		/>
+	);
 }
 
 export default HeaderButton;

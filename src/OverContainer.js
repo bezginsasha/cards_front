@@ -6,11 +6,11 @@ function OverContainer(props) {
 		props.clickHandler();
 	}
 
-    return (
-        <section className="over-container" onMouseDown={ clickHandler }>
-            { props.children }
-        </section>
-    );
+	return (
+		<section className="over-container" onMouseDown={ clickHandler }>
+			{ props.children }
+		</section>
+	);
 }
 
 export default OverContainer;
