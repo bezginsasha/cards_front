@@ -8,7 +8,7 @@ function WordList(props) {
 
 	if (cards != null) {
 		cardsElements = cards.map( card =>
-			<WordListItem value={card.original_word} key={ card._id.$oid } />
+			<WordListItem value={card.original_word} key={ card.id } />
 		);
 	}
 
