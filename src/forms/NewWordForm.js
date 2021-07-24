@@ -4,7 +4,7 @@ import './CommonForm.css';
 import OverForm from './OverForm'
 
 import { insertCard } from '../features/cards/cardsSlice'
-import { updateOriginalWord, updateTranslatedWord } from '../features/inputWords/inputWordsSlice'
+import { updateOriginalWord, updateTranslatedWord, clearWords } from '../features/inputWords/inputWordsSlice'
 
 function NewWordForm(props) {
 	var dispatch = useDispatch();
@@ -37,6 +37,7 @@ function NewWordForm(props) {
 					};
 
 					dispatch(insertCard(card));
+					dispatch(clearWords());
 				}
 			)
 		);

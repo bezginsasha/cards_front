@@ -14,10 +14,14 @@ const inputWordsSlice = createSlice({
 		},
 		updateTranslatedWord: (state, action) => {
 			state.translatedWord = action.payload;
+		},
+		clearWords: (state, action) => {
+			state.originalWord = '';
+			state.translatedWord = '';
 		}
 	}
 });
 
-export const { updateOriginalWord, updateTranslatedWord } = inputWordsSlice.actions;
+export const { updateOriginalWord, updateTranslatedWord, clearWords } = inputWordsSlice.actions;
 
 export default inputWordsSlice.reducer
