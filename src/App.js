@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './index.css';
 
 import Search from './Search';
@@ -11,6 +12,8 @@ import NewWordForm from './forms/NewWordForm';
 import AccountForm from './forms/AccountForm';
 import GameForm from './forms/GameForm';
 import HelpForm from './forms/HelpForm';
+
+import { initiateCards } from './features/cards/cardsSlice'
 
 export const FORMS = {
 	newWord: 'New word',
@@ -25,6 +28,8 @@ export const FORMS = {
 function App() {
     var [ currentForm, setCurrentForm ] = useState(FORMS.none);
     var [ cards, setCards ] = useState(null);
+
+    var dispatch = useDispatch();
 
 	function headerButtonHandler(event, form) {
 	    setCurrentForm(form);
@@ -47,7 +52,7 @@ function App() {
         })
         .then(
             response => response.json().then(
-                data => setCards(data)
+                data => dispatch(initiateCards(data))
             )
         );
 	}, []);
