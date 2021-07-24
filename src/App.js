@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './index.css';
 
 import Search from './Search';
@@ -27,9 +27,8 @@ export const FORMS = {
 
 function App() {
     var [ currentForm, setCurrentForm ] = useState(FORMS.none);
-    var [ cards, setCards ] = useState(null);
-
     var dispatch = useDispatch();
+    var cards = useSelector(state => state.cards);
 
 	function headerButtonHandler(event, form) {
 	    setCurrentForm(form);
