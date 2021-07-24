@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 
 import Search from './Search';
@@ -22,34 +22,23 @@ export const FORMS = {
 	none: 'None',
 };
 
-class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			currentForm: FORMS.none,
-			cards: null
-		};
+function App() {
+    var [ currentForm, setCurrentForm ] = useState(FORMS.none);
+    var [ cards, setCards ] = useState(null);
+
+	function headerButtonHandler(event, form) {
+	    setCurrentForm(form);
 	}
 
-	headerButtonHandler = (event, form) => {
-		this.setState({
-			currentForm: form
-		});
-	};
+	function overContainerClickHandler(event) {
+	    setCurrentForm(FORMS.none);
+	}
 
-	overContainerClickHandler = (event) => {
-		this.setState({
-			currentForm: FORMS.none
-		});
-	};
+	function closeForm() {
+	    setCurrentForm(FORMS.none);
+	}
 
-	closeForm = () => {
-	    this.setState({
-			currentForm: FORMS.none,
-	    });
-	};
-
-	componentDidMount = () => {
+	useEffect(() => {
         fetch('http://localhost:5000', {
             method: 'POST',
             headers: {
@@ -58,57 +47,57 @@ class App extends React.Component {
         })
         .then(
             response => response.json().then(
-                data => {this.setState({ cards: data }); console.log(data); }
+                data => setCards(data)
             )
         );
-	};
+	}, []);
 
-	render() {
-		var currentForm = null;
+	console.log(cards);
+	
+	var currentFormElement = null;
+	
+    switch (currentForm) {
+        case FORMS.newWord:
+            currentFormElement = <NewWordForm closeForm={ closeForm } />;
+            break;
+        case FORMS.game:
+            currentFormElement = <GameForm />;
+            break;
+        case FORMS.account:
+            currentFormElement = <AccountForm />;
+            break;
+        case FORMS.help:
+            currentFormElement = <HelpForm />;
+            break;
+        default:
+            currentFormElement = null
+    }
+    
+    if (currentFormElement) {
+        currentFormElement = (
+            <OverContainer clickHandler={ overContainerClickHandler } >
+                { currentFormElement }
+            </OverContainer>
+        );
+    }
 
-		switch (this.state.currentForm) {
-			case FORMS.newWord:
-				currentForm = <NewWordForm closeForm={ this.closeForm } />;
-				break;
-			case FORMS.game:
-				currentForm = <GameForm />;
-				break;
-			case FORMS.account:
-				currentForm = <AccountForm />;
-				break;
-			case FORMS.help:
-				currentForm = <HelpForm />;
-				break;
-			default:
-				currentForm = null
-		}
-
-		if (currentForm) {
-			currentForm = (
-				<OverContainer clickHandler={ this.overContainerClickHandler } >
-					{ currentForm }
-				</OverContainer>
-			);
-		}
-
-		return(
-			<React.Fragment>
-				<section className="header" >
-					<HeaderButton form={ FORMS.newWord } handler={ this.headerButtonHandler } />
-					<HeaderButton form={ FORMS.game } handler={ this.headerButtonHandler } />
-					<HeaderButton form={ FORMS.piles } handler={ this.headerButtonHandler } />
-					<HeaderButton form={ FORMS.help } handler={ this.headerButtonHandler } />
-					<HeaderButton form={ FORMS.import } handler={ this.headerButtonHandler } />
-					<HeaderButton form={ FORMS.account } handler={ this.headerButtonHandler } />
-				</section>
-				<hr />
-				<Search />
-				<Pipe value="test pipe" />
-				<WordList cards={ this.state.cards } />
-				{ currentForm }
-			</React.Fragment>
-		)
-	}
+	return (
+        <React.Fragment>
+            <section className="header" >
+                <HeaderButton form={ FORMS.newWord } handler={ headerButtonHandler } />
+                <HeaderButton form={ FORMS.game } handler={ headerButtonHandler } />
+                <HeaderButton form={ FORMS.piles } handler={ headerButtonHandler } />
+                <HeaderButton form={ FORMS.help } handler={ headerButtonHandler } />
+                <HeaderButton form={ FORMS.import } handler={ headerButtonHandler } />
+                <HeaderButton form={ FORMS.account } handler={ headerButtonHandler } />
+            </section>
+            <hr />
+            <Search />
+            <Pipe value="test pipe" />
+            <WordList cards={ cards } />
+            { currentFormElement }
+        </React.Fragment>
+    )
 }
 
 export default App
