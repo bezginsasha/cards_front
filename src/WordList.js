@@ -2,7 +2,6 @@ import React from 'react';
 import WordListItem from "./WordListItem";
 
 function WordList(props) {
-
 	var cards = props.cards;
 	var cardsElements = null;
 
