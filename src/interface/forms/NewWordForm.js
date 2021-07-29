@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import './CommonForm.css';
 import OverForm from './OverForm'
 
-import { insertCard } from '../state/cards/cardsSlice'
-import { updateOriginalWord, updateTranslatedWord, clearWords } from '../state/inputWords/inputWordsSlice'
+import { insertCard } from '../../state/cards/cardsSlice'
+import { updateOriginalWord, updateTranslatedWord, clearWords } from '../../state/inputWords/inputWordsSlice'
 
 function NewWordForm(props) {
 	var dispatch = useDispatch();

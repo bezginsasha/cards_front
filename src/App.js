@@ -8,10 +8,10 @@ import WordList from './WordList';
 import OverContainer from './OverContainer';
 import Pipe from './Pipe'
 
-import NewWordForm from './forms/NewWordForm';
-import AccountForm from './forms/AccountForm';
-import GameForm from './forms/GameForm';
-import HelpForm from './forms/HelpForm';
+import NewWordForm from './interface/forms/NewWordForm';
+import AccountForm from './interface/forms/AccountForm';
+import GameForm from './interface/forms/GameForm';
+import HelpForm from './interface/forms/HelpForm';
 
 import { initiateCards } from './state/cards/cardsSlice'
 
