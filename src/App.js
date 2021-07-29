@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './index.css';
 
-import Search from './Search';
-import HeaderButton from './HeaderButton';
+import Search from './interface/Search/Search';
+import HeaderButton from './interface/HeaderButton/HeaderButton';
 import WordList from './interface/WordList/WordList';
-import OverContainer from './OverContainer';
+import OverContainer from './interface/OverContainer/OverContainer';
 import Pipe from './Pipe'
 
 import NewWordForm from './interface/forms/NewWordForm';
