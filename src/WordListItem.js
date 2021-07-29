@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './WordListItem.css';
 import more from './more.svg';
 import ContextMenu from './ContextMenu'
