@@ -13,7 +13,7 @@ import AccountForm from './forms/AccountForm';
 import GameForm from './forms/GameForm';
 import HelpForm from './forms/HelpForm';
 
-import { initiateCards } from './features/cards/cardsSlice'
+import { initiateCards } from './state/cards/cardsSlice'
 
 export const FORMS = {
 	newWord: 'New word',
