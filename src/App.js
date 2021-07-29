@@ -4,7 +4,7 @@ import './index.css';
 
 import Search from './Search';
 import HeaderButton from './HeaderButton';
-import WordList from './WordList';
+import WordList from './interface/WordList/WordList';
 import OverContainer from './OverContainer';
 import Pipe from './Pipe'
 

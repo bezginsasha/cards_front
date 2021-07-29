@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './WordListItem.css';
 import more from './more.svg';
-import ContextMenu from './ContextMenu'
+import ContextMenu from '../ContextMenu/ContextMenu'
 
 function WordListItem(props) {
 	// left is x coordinate of ContextMenu
