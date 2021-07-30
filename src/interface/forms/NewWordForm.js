@@ -6,6 +6,8 @@ import OverForm from './OverForm'
 import { insertCard } from '../../state/cards/cardsSlice'
 import { updateOriginalWord, updateTranslatedWord, clearWords } from '../../state/inputWords/inputWordsSlice'
 
+import request from '../../util/request'
+
 function NewWordForm(props) {
 	var dispatch = useDispatch();
 	var originalWord = useSelector(state => state.inputWords.originalWord);
@@ -19,28 +21,22 @@ function NewWordForm(props) {
 		form.set('original_word', originalWord);
 		form.set('translated_word', translatedWord);
 
-		fetch('http://localhost:5000/add', {
+		request({
+			url: 'add',
 			method: 'POST',
-			headers: {
-				Origin: 'http://localhost:3000/'
-			},
-			body: form
-		})
-		.then(
-			response => response.json().then(
-				data => {
-					console.log(data.id);
-					var card = {
-						id: data.id,
-						original_word: originalWord,
-						translated_word: translatedWord
-					};
+			body: form,
+			callback: data => {
+				console.log(data.id);
+				var card = {
+					id: data.id,
+					original_word: originalWord,
+					translated_word: translatedWord
+				};
 
-					dispatch(insertCard(card));
-					dispatch(clearWords());
-				}
-			)
-		);
+				dispatch(insertCard(card));
+				dispatch(clearWords());
+			}
+		});
 
 		props.closeForm();
 	}
