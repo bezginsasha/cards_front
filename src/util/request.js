@@ -10,13 +10,18 @@ function request(params) {
 	var body = params.body;
 	var callback = params.callback;
 
-	fetch(targetUrl, {
+	var response = {
 		method: method,
 		headers: {
 			Origin: 'http://localhost:3000/'
-		},
-		body: body
-	})
+		}
+	};
+
+	if (body) {
+		response.body = body
+	}
+
+	fetch(targetUrl, response)
 	.then(
 		response => response.json().then(callback)
 	);
