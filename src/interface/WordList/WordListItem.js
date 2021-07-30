@@ -17,7 +17,7 @@ function WordListItem(props) {
 	return (
 		<div className="word-list-item">
 			{ props.value }
-			{ props.visible ? <ContextMenu left={ left }/> : null }
+			{ props.visible ? <ContextMenu left={ left } wordId={ props.id } /> : null }
 			<img src={ more } className="more-button" onClick={ contextMenuClickHandler } />
 		</div>
 	);
