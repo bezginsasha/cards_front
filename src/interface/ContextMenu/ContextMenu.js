@@ -1,12 +1,24 @@
 import './ContextMenu.css'
 import { useDispatch } from 'react-redux'
 import { deleteCard } from '../../state/cards/cardsSlice'
+import request from "../../util/request";
 
 function ContextMenu(props) {
 	var dispatch = useDispatch();
 
 	function deleteWord() {
-		dispatch(deleteCard(props.wordId));
+		var form = new FormData();
+		form.set('id', props.wordId);
+
+		request({
+			url: 'delete',
+			method: 'POST',
+			body: form,
+			callback: data => {
+				console.log(data);
+				dispatch(deleteCard(props.wordId));
+			}
+		});
 	}
 
 	return (
