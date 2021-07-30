@@ -4,7 +4,7 @@
 //   - body - that passes to POST request
 //   - callback - function that would be called after successful request
 function request(params) {
-	var rootUrl = 'http://localhost:5000/';
+	var rootUrl = 'http://localhost:5000/api/';
 	var targetUrl = rootUrl + params.url;
 	var method = params.method || 'GET';
 	var body = params.body;
