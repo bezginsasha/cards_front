@@ -14,6 +14,7 @@ import GameForm from '../interface/forms/GameForm';
 import HelpForm from '../interface/forms/HelpForm';
 
 import { initiateCards } from '../state/cards/cardsSlice'
+import request from "../util/request";
 
 export const FORMS = {
 	newWord: 'New word',
@@ -43,17 +44,10 @@ function App() {
 	}
 
 	useEffect(() => {
-		fetch('http://localhost:5000', {
-			method: 'POST',
-			headers: {
-				Origin: 'http://localhost:3000'
-			},
-		})
-		.then(
-			response => response.json().then(
-				data => dispatch(initiateCards(data))
-			)
-		);
+		request({
+			url: 'get_all',
+			callback: data => dispatch(initiateCards(data))
+		});
 	}, []);
 
 	var currentFormElement = null;
