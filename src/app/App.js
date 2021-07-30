@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './index.css';
 
-import Search from './interface/Search/Search';
-import HeaderButton from './interface/HeaderButton/HeaderButton';
-import WordList from './interface/WordList/WordList';
-import OverContainer from './interface/OverContainer/OverContainer';
-import Pipe from './Pipe'
+import Search from '../interface/Search/Search';
+import HeaderButton from '../interface/HeaderButton/HeaderButton';
+import WordList from '../interface/WordList/WordList';
+import OverContainer from '../interface/OverContainer/OverContainer';
+import Pipe from '../Pipe'
 
-import NewWordForm from './interface/forms/NewWordForm';
-import AccountForm from './interface/forms/AccountForm';
-import GameForm from './interface/forms/GameForm';
-import HelpForm from './interface/forms/HelpForm';
+import NewWordForm from '../interface/forms/NewWordForm';
+import AccountForm from '../interface/forms/AccountForm';
+import GameForm from '../interface/forms/GameForm';
+import HelpForm from '../interface/forms/HelpForm';
 
-import { initiateCards } from './state/cards/cardsSlice'
+import { initiateCards } from '../state/cards/cardsSlice'
 
 export const FORMS = {
 	newWord: 'New word',
