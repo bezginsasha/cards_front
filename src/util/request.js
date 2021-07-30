@@ -23,4 +23,3 @@ function request(params) {
 }
 
 export default request
-
