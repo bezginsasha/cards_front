@@ -1,15 +1,31 @@
+import { useSelector, useDispatch } from 'react-redux'
 import './PilesForm.css'
 import OverForm from '../OverForm'
 import PilesFormRow from './PilesFormRow'
+import { deletePile, updatePile } from '../../../state/pilesSlice'
 
 function PilesForm(props) {
-	var piles = [
-		'word',
-		'test',
-		'hello',
-	];
+	var dispatch = useDispatch();
+	var piles = useSelector(state => state.piles);
 
-	var pilesElements = piles.map(pile => <PilesFormRow name={ pile } />);
+	function deletePileHandler(pileName) {
+		dispatch(deletePile(pileName));
+	}
+
+	function updatePileHandler(oldName, newName) {
+		dispatch(updatePile({
+			oldName: oldName,
+			newName: newName
+		}))
+	}
+
+	var pilesElements = piles.map(pile => (
+		<PilesFormRow
+			name={ pile }
+			deletePileHandler={ deletePileHandler }
+			updatePileHandler={ updatePileHandler }
+		/>
+	));
 
 	return (
 		<OverForm>
