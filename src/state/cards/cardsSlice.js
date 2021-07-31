@@ -15,8 +15,8 @@ const cardsSlice = createSlice({
 		updateCard: (state, action) => {
 			var argumentCard = action.payload;
 			var card = state.find(card => card.id === argumentCard.id);
-			card.original_word = argumentCard.originalWord;
-			card.translated_word = argumentCard.translatedWord;
+			card.original_word = argumentCard.original_word;
+			card.translated_word = argumentCard.translated_word;
 		},
 		deleteCard: (state, action) => {
 			var card = state.find(card => card.id === action.payload);

@@ -2,6 +2,7 @@ import OverForm from './OverForm'
 import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { updateCard } from '../../state/cards/cardsSlice'
+import request from "../../util/request";
 
 function UpdateCardForm(props) {
 	var dispatch = useDispatch();
@@ -19,11 +20,31 @@ function UpdateCardForm(props) {
 	}
 
 	function submitHandler(event) {
-		dispatch(updateCard({
-			id: props.cardId,
-			originalWord: originalWord,
-			translatedWord: translatedWord
-		}));
+		if (!originalWord || !translatedWord)
+			return;
+
+		var form = new FormData();
+		form.set('id', props.cardId);
+		form.set('original_word', originalWord);
+		form.set('translated_word', translatedWord);
+
+		request({
+			url: 'update',
+			method: 'POST',
+			body: form,
+			callback: data => {
+				console.log(data);
+				var card = {
+					id: props.cardId,
+					original_word: originalWord,
+					translated_word: translatedWord
+				};
+
+				// console.log(card);
+
+				dispatch(updateCard(card));
+			}
+		});
 		props.closeForm();
 	}
 
