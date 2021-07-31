@@ -14,10 +14,17 @@ function CardListItem(props) {
 		setLeft(event.clientX);
 	}
 
+	var contextMenuElement = (
+		<ContextMenu
+			left={ left }
+			cardId={ props.id }
+		/>
+	);
+
 	return (
 		<div className="card-list-item">
 			{ props.value }
-			{ props.visible ? <ContextMenu left={ left } cardId={ props.id } /> : null }
+			{ props.visible ? { contextMenuElement } : null }
 			<img src={ more } className="more-button" onClick={ contextMenuClickHandler } />
 		</div>
 	);
