@@ -32,6 +32,6 @@ var pilesSlice = createSlice({
 	}
 });
 
-export const { deletePile, updateOrInsertPile } = pilesSlice.actions
+export const { deletePile, updateOrInsertPile } = pilesSlice.actions;
 
 export default pilesSlice.reducer
