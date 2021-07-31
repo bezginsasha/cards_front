@@ -10,7 +10,6 @@ function UpdateCardForm(props) {
 	var [ originalWord, setOriginalWord ] = useState(card.original_word);
 	var [ translatedWord, setTranslatedWord ] = useState(card.translated_word);
 
-
 	function originalWordInputHandler(event) {
 		setOriginalWord(event.target.value);
 	}
@@ -39,8 +38,6 @@ function UpdateCardForm(props) {
 					original_word: originalWord,
 					translated_word: translatedWord
 				};
-
-				// console.log(card);
 
 				dispatch(updateCard(card));
 			}
