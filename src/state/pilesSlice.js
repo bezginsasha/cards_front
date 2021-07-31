@@ -14,15 +14,24 @@ var pilesSlice = createSlice({
 			var index = state.indexOf(action.payload);
 			state.splice(index, 1);
 		},
-		updatePile: (state, action) => {
+		updateOrInsertPile: (state, action) => {
 			var oldName = action.payload.oldName;
 			var newName = action.payload.newName;
-			var index = state.indexOf(oldName);
-			state[index] = newName;
+
+			if (!newName) {
+				return;
+			}
+
+			if (oldName) {
+				var index = state.indexOf(oldName);
+				state[index] = newName;
+			} else {
+				state.push(newName);
+			}
 		}
 	}
 });
 
-export const { deletePile, updatePile } = pilesSlice.actions
+export const { deletePile, updateOrInsertPile } = pilesSlice.actions
 
 export default pilesSlice.reducer
