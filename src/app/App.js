@@ -34,6 +34,7 @@ function App() {
 	var [ cardIdForUpdate, setCardIdForUpdate ] = useState('');
 	var dispatch = useDispatch();
 	var cards = useSelector(state => state.cards);
+	var piles = useSelector(state => state.piles);
 
 	function headerButtonHandler(event, form) {
 		setCurrentForm(form);
@@ -92,6 +93,8 @@ function App() {
 		);
 	}
 
+	var pilesElements = piles.map(pile => <Pile value={ pile } />);
+
 	return (
 		<React.Fragment>
 			<section className="header" >
@@ -104,7 +107,7 @@ function App() {
 			</section>
 			<hr />
 			<Search />
-			<Pile value="test pile" />
+			{ pilesElements }
 			<CardList cards={ cards } showUpdateCardForm={ showUpdateCardForm } />
 			{ currentFormElement }
 		</React.Fragment>

@@ -31,6 +31,7 @@ function PilesForm(props) {
 		<OverForm>
 			<p>{ props.title }</p>
 			{ pilesElements }
+			<input type="button" value="Add new" className="piles-form-button" />
 		</OverForm>
 	);
 }
