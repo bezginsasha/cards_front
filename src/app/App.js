@@ -6,7 +6,7 @@ import Search from '../interface/Search/Search';
 import HeaderButton from '../interface/HeaderButton/HeaderButton';
 import CardList from '../interface/WordList/CardList';
 import OverContainer from '../interface/OverContainer/OverContainer';
-import Pipe from '../Pipe'
+import Pile from '../Pile'
 
 import NewCardForm from '../interface/forms/NewCardForm';
 import UpdateCardForm from '../interface/forms/UpdateCardForm';
@@ -100,7 +100,7 @@ function App() {
 			</section>
 			<hr />
 			<Search />
-			<Pipe value="test pipe" />
+			<Pile value="test pile" />
 			<CardList cards={ cards } showUpdateCardForm={ showUpdateCardForm } />
 			{ currentFormElement }
 		</React.Fragment>
