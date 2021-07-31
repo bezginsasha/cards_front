@@ -1,3 +1,6 @@
+// This state i use to store input words of NewCardForm
+// In case user close form when he didn't want it
+// With reopening this form input values was remaining
 import { createSlice } from '@reduxjs/toolkit'
 
 var initialState = {
