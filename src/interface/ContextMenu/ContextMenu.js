@@ -6,9 +6,9 @@ import request from "../../util/request";
 function ContextMenu(props) {
 	var dispatch = useDispatch();
 
-	function deleteWord() {
+	function deleteCardHandler() {
 		var form = new FormData();
-		form.set('id', props.wordId);
+		form.set('id', props.cardId);
 
 		request({
 			url: 'delete',
@@ -16,7 +16,7 @@ function ContextMenu(props) {
 			body: form,
 			callback: data => {
 				console.log(data);
-				dispatch(deleteCard(props.wordId));
+				dispatch(deleteCard(props.cardId));
 			}
 		});
 	}
@@ -30,7 +30,7 @@ function ContextMenu(props) {
 			/>
 			<input
 				type="button"
-				onClick={ deleteWord }
+				onClick={ deleteCardHandler }
 				value="delete"
 				className="context-menu-button"
 			/>

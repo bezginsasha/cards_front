@@ -3,7 +3,7 @@ import './WordListItem.css';
 import more from './more.svg';
 import ContextMenu from '../ContextMenu/ContextMenu'
 
-function WordListItem(props) {
+function CardListItem(props) {
 	// left is x coordinate of ContextMenu
 	// because this word using in css
 	var [ left, setLeft ] = useState(0);
@@ -15,12 +15,12 @@ function WordListItem(props) {
 	}
 
 	return (
-		<div className="word-list-item">
+		<div className="card-list-item">
 			{ props.value }
-			{ props.visible ? <ContextMenu left={ left } wordId={ props.id } /> : null }
+			{ props.visible ? <ContextMenu left={ left } cardId={ props.id } /> : null }
 			<img src={ more } className="more-button" onClick={ contextMenuClickHandler } />
 		</div>
 	);
 }
 
-export default WordListItem;
+export default CardListItem;

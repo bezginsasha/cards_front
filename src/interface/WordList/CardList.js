@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import WordListItem from "./WordListItem";
+import CardListItem from "./CardListItem";
 
-function WordList(props) {
+function CardList(props) {
 	var cards = props.cards;
 	var cardsElements = null;
 
@@ -17,7 +17,7 @@ function WordList(props) {
 
 	if (cards != null) {
 		cardsElements = cards.map( card =>
-			<WordListItem
+			<CardListItem
 				value={card.original_word}
 				key={ card.id }
 				id={ card.id }
@@ -30,4 +30,4 @@ function WordList(props) {
 	return cardsElements
 }
 
-export default WordList
+export default CardList

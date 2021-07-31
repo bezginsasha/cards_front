@@ -8,7 +8,7 @@ import { updateOriginalWord, updateTranslatedWord, clearWords } from '../../stat
 
 import request from '../../util/request'
 
-function NewWordForm(props) {
+function NewCardForm(props) {
 	var dispatch = useDispatch();
 	var originalWord = useSelector(state => state.inputWords.originalWord);
 	var translatedWord = useSelector(state => state.inputWords.translatedWord);
@@ -51,7 +51,7 @@ function NewWordForm(props) {
 
 	return (
 		<OverForm>
-			<p>New word</p>
+			<p>New card</p>
 			<textarea
 				onInput={ originalWordInputHandler }
 				value={ originalWord }
@@ -78,4 +78,4 @@ function NewWordForm(props) {
 	);
 }
 
-export default NewWordForm;
+export default NewCardForm;

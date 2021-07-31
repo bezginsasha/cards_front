@@ -1,4 +1,4 @@
-.word-list-item {
+.card-list-item {
     display: flex;
     justify-content: space-between;
 	width: 600px;

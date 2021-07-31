@@ -4,11 +4,11 @@ import './index.css';
 
 import Search from '../interface/Search/Search';
 import HeaderButton from '../interface/HeaderButton/HeaderButton';
-import WordList from '../interface/WordList/WordList';
+import CardList from '../interface/WordList/CardList';
 import OverContainer from '../interface/OverContainer/OverContainer';
 import Pipe from '../Pipe'
 
-import NewWordForm from '../interface/forms/NewWordForm';
+import NewCardForm from '../interface/forms/NewCardForm';
 import AccountForm from '../interface/forms/AccountForm';
 import GameForm from '../interface/forms/GameForm';
 import HelpForm from '../interface/forms/HelpForm';
@@ -17,7 +17,7 @@ import { initiateCards } from '../state/cards/cardsSlice'
 import request from "../util/request";
 
 export const FORMS = {
-	newWord: 'New word',
+	newCard: 'New card',
 	game: 'Game',
 	piles: 'Piles',
 	help: 'Help',
@@ -53,8 +53,8 @@ function App() {
 	var currentFormElement = null;
 	
 	switch (currentForm) {
-		case FORMS.newWord:
-			currentFormElement = <NewWordForm closeForm={ closeForm } />;
+		case FORMS.newCard:
+			currentFormElement = <NewCardForm closeForm={ closeForm } />;
 			break;
 		case FORMS.game:
 			currentFormElement = <GameForm />;
@@ -80,7 +80,7 @@ function App() {
 	return (
 		<React.Fragment>
 			<section className="header" >
-				<HeaderButton form={ FORMS.newWord } handler={ headerButtonHandler } />
+				<HeaderButton form={ FORMS.newCard } handler={ headerButtonHandler } />
 				<HeaderButton form={ FORMS.game } handler={ headerButtonHandler } />
 				<HeaderButton form={ FORMS.piles } handler={ headerButtonHandler } />
 				<HeaderButton form={ FORMS.help } handler={ headerButtonHandler } />
@@ -90,7 +90,7 @@ function App() {
 			<hr />
 			<Search />
 			<Pipe value="test pipe" />
-			<WordList cards={ cards } />
+			<CardList cards={ cards } />
 			{ currentFormElement }
 		</React.Fragment>
 	)
