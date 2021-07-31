@@ -62,19 +62,19 @@ function App() {
 	
 	switch (currentForm) {
 		case FORMS.newCard:
-			currentFormElement = <NewCardForm closeForm={ closeForm } />;
+			currentFormElement = <NewCardForm title={ FORMS.newCard } closeForm={ closeForm } />;
 			break;
 		case FORMS.updateCard:
-			currentFormElement = <UpdateCardForm closeForm={ closeForm } cardId={ cardIdForUpdate } />;
+			currentFormElement = <UpdateCardForm title={ FORMS.updateCard } closeForm={ closeForm } cardId={ cardIdForUpdate } />;
 			break;
 		case FORMS.game:
-			currentFormElement = <GameForm />;
+			currentFormElement = <GameForm title={ FORMS.game } />;
 			break;
 		case FORMS.account:
-			currentFormElement = <AccountForm />;
+			currentFormElement = <AccountForm title={ FORMS.account } />;
 			break;
 		case FORMS.help:
-			currentFormElement = <HelpForm />;
+			currentFormElement = <HelpForm title={ FORMS.help } />;
 			break;
 		default:
 			currentFormElement = null

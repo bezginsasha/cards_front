@@ -2,10 +2,10 @@ import React from 'react';
 import './CommonForm.css';
 import OverForm from './OverForm';
 
-function AccountForm() {
+function AccountForm(props) {
 	return (
 		<OverForm>
-			<p>Account</p>
+			<p>{ props.title }</p>
 			<input type="text" className="over-form-input" placeholder="Username" />
 			<input type="text" className="over-form-input" placeholder="Password" />
 			<br />

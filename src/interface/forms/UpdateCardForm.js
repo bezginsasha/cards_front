@@ -47,7 +47,7 @@ function UpdateCardForm(props) {
 
 	return (
 		<OverForm>
-			<p>New card</p>
+			<p>{ props.title }</p>
 			<textarea
 				onInput={ originalWordInputHandler }
 				value={ originalWord }
