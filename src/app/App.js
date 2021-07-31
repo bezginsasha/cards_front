@@ -10,6 +10,7 @@ import Pile from '../Pile'
 
 import NewCardForm from '../interface/forms/NewCardForm';
 import UpdateCardForm from '../interface/forms/UpdateCardForm';
+import PilesForm from '../interface/forms/PilesForm/PilesForm'
 import AccountForm from '../interface/forms/AccountForm';
 import GameForm from '../interface/forms/GameForm';
 import HelpForm from '../interface/forms/HelpForm';
@@ -69,6 +70,9 @@ function App() {
 			break;
 		case FORMS.game:
 			currentFormElement = <GameForm title={ FORMS.game } />;
+			break;
+		case FORMS.piles:
+			currentFormElement = <PilesForm title={ FORMS.piles } />;
 			break;
 		case FORMS.account:
 			currentFormElement = <AccountForm title={ FORMS.account } />;

@@ -1,0 +1,22 @@
+.piles-form-row * {
+	margin: 5px;
+	margin-bottom: 10px;
+}
+
+.piles-form-input {
+	background: none;
+	border: none;
+	border-bottom: 1px #878787 solid;
+}
+.piles-form-input:focus {
+	outline: none;
+}
+
+.piles-form-button {
+	padding: 2px 15px;
+	background: #e2e2e2;
+	border: none;
+}
+.piles-form-button:hover {
+	background: #d4d4d4;
+}
