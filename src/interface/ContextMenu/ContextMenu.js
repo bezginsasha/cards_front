@@ -26,7 +26,7 @@ function ContextMenu(props) {
 	}
 
 	return (
-		<div className="context-menu" style={ {left: props.left} }>
+		<div className="context-menu" style={ { left: props.left - 10 } }>
 			<input
 				type="button"
 				onClick={ showUpdateCardFormClick }
