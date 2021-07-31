@@ -15,7 +15,7 @@ import AccountForm from '../interface/forms/AccountForm';
 import GameForm from '../interface/forms/GameForm';
 import HelpForm from '../interface/forms/HelpForm';
 
-import { initiateCards } from '../state/cards/cardsSlice'
+import { initiateCards } from '../state/cardsSlice'
 import request from "../util/request";
 
 export const FORMS = {

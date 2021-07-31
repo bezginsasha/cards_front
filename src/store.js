@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import cardsReducer from './state/cards/cardsSlice'
-import inputWordsSlice from './state/inputWords/inputWordsSlice'
+import cardsReducer from './state/cardsSlice'
+import inputWordsSlice from './state/inputWordsSlice'
 
 export default configureStore({
 	reducer: {

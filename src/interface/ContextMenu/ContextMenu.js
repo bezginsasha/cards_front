@@ -1,6 +1,6 @@
 import './ContextMenu.css'
 import { useDispatch } from 'react-redux'
-import { deleteCard } from '../../state/cards/cardsSlice'
+import { deleteCard } from '../../state/cardsSlice'
 import request from "../../util/request";
 
 function ContextMenu(props) {

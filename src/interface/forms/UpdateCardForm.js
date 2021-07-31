@@ -1,7 +1,7 @@
 import OverForm from './OverForm'
 import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { updateCard } from '../../state/cards/cardsSlice'
+import { updateCard } from '../../state/cardsSlice'
 import request from "../../util/request";
 
 function UpdateCardForm(props) {
