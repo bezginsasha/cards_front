@@ -23,6 +23,7 @@ function CardList(props) {
 				id={ card.id }
 				visible={ card.id === idOfVisibleContextMenu }
 				contextMenuClickHandler={ contextMenuClickHandler }
+				showUpdateCardForm={ props.showUpdateCardForm }
 			/>
 		);
 	}

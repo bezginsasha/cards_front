@@ -9,6 +9,7 @@ import OverContainer from '../interface/OverContainer/OverContainer';
 import Pipe from '../Pipe'
 
 import NewCardForm from '../interface/forms/NewCardForm';
+import UpdateCardForm from '../interface/forms/UpdateCardForm';
 import AccountForm from '../interface/forms/AccountForm';
 import GameForm from '../interface/forms/GameForm';
 import HelpForm from '../interface/forms/HelpForm';
@@ -18,6 +19,7 @@ import request from "../util/request";
 
 export const FORMS = {
 	newCard: 'New card',
+	updateCard: 'Updating card',
 	game: 'Game',
 	piles: 'Piles',
 	help: 'Help',
@@ -28,11 +30,17 @@ export const FORMS = {
 
 function App() {
 	var [ currentForm, setCurrentForm ] = useState(FORMS.none);
+	var [ cardIdForUpdate, setCardIdForUpdate ] = useState('');
 	var dispatch = useDispatch();
 	var cards = useSelector(state => state.cards);
 
 	function headerButtonHandler(event, form) {
 		setCurrentForm(form);
+	}
+
+	function showUpdateCardForm(cardId) {
+		setCurrentForm(FORMS.updateCard);
+		setCardIdForUpdate(cardId);
 	}
 
 	function overContainerClickHandler(event) {
@@ -55,6 +63,9 @@ function App() {
 	switch (currentForm) {
 		case FORMS.newCard:
 			currentFormElement = <NewCardForm closeForm={ closeForm } />;
+			break;
+		case FORMS.updateCard:
+			currentFormElement = <UpdateCardForm closeForm={ closeForm } cardId={ cardIdForUpdate } />;
 			break;
 		case FORMS.game:
 			currentFormElement = <GameForm />;
@@ -90,7 +101,7 @@ function App() {
 			<hr />
 			<Search />
 			<Pipe value="test pipe" />
-			<CardList cards={ cards } />
+			<CardList cards={ cards } showUpdateCardForm={ showUpdateCardForm } />
 			{ currentFormElement }
 		</React.Fragment>
 	)

@@ -12,6 +12,12 @@ const cardsSlice = createSlice({
 		insertCard: (state, action) => {
 			state.push(action.payload);
 		},
+		updateCard: (state, action) => {
+			var argumentCard = action.payload;
+			var card = state.find(card => card.id === argumentCard.id);
+			card.original_word = argumentCard.originalWord;
+			card.translated_word = argumentCard.translatedWord;
+		},
 		deleteCard: (state, action) => {
 			var card = state.find(card => card.id === action.payload);
 			var index = state.indexOf(card);
@@ -20,6 +26,6 @@ const cardsSlice = createSlice({
 	}
 });
 
-export const { initiateCards, insertCard, deleteCard } = cardsSlice.actions;
+export const { initiateCards, insertCard, updateCard, deleteCard } = cardsSlice.actions;
 
 export default cardsSlice.reducer

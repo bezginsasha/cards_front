@@ -21,10 +21,15 @@ function ContextMenu(props) {
 		});
 	}
 
+	function showUpdateCardFormClick(event) {
+		props.showUpdateCardForm(props.cardId);
+	}
+
 	return (
 		<div className="context-menu" style={ {left: props.left} }>
 			<input
 				type="button"
+				onClick={ showUpdateCardFormClick }
 				value="edit"
 				className="context-menu-button"
 			/>
