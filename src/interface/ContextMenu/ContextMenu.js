@@ -11,7 +11,7 @@ function ContextMenu(props) {
 		form.set('id', props.cardId);
 
 		request({
-			url: 'delete',
+			url: 'cards/delete',
 			method: 'POST',
 			body: form,
 			callback: data => {

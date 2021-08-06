@@ -22,7 +22,7 @@ function NewCardForm(props) {
 		form.set('translated_word', translatedWord);
 
 		request({
-			url: 'add',
+			url: 'cards/add',
 			method: 'POST',
 			body: form,
 			callback: data => {

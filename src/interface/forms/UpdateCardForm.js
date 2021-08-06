@@ -28,7 +28,7 @@ function UpdateCardForm(props) {
 		form.set('translated_word', translatedWord);
 
 		request({
-			url: 'update',
+			url: 'cards/update',
 			method: 'POST',
 			body: form,
 			callback: data => {

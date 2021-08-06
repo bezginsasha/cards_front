@@ -55,7 +55,7 @@ function App() {
 
 	useEffect(() => {
 		request({
-			url: 'get_all',
+			url: 'cards/get_all',
 			callback: data => dispatch(initiateCards(data))
 		});
 	}, []);
