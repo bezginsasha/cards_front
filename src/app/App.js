@@ -98,7 +98,7 @@ function App() {
 		);
 	}
 
-	var pilesElements = piles.map(pile => <Pile name={ pile } />);
+	var pilesElements = piles.map(pile => <Pile name={ pile } key={ pile } />);
 
 	return (
 		<React.Fragment>
