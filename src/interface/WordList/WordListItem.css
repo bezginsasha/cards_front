@@ -1,6 +1,6 @@
 .card-list-item {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 	width: 600px;
 	margin: 15px auto;
 	padding: 4px 10px;
@@ -9,6 +9,6 @@
 }
 
 .more-button {
-    cursor: pointer;
-    width: 20px;
+	cursor: pointer;
+	width: 20px;
 }

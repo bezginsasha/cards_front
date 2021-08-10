@@ -13,8 +13,8 @@ function PilesForm(props) {
 	}
 
 	function hideNewPileRow() {
-	    setShowEmptyInput(false);
-    }
+		setShowEmptyInput(false);
+	}
 
 	var pilesElements = piles.map(pile => (
 		<PilesFormRow name={ pile } key={ pile } />

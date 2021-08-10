@@ -27,9 +27,9 @@ function PilesFormRow(props) {
 	}
 
 	function updateClickHandler(event) {
-	    if (props.hideNewPileRow) {
-            props.hideNewPileRow();
-        }
+		if (props.hideNewPileRow) {
+			props.hideNewPileRow();
+		}
 
 		if (props.name) {
 			dispatch(updatePile({

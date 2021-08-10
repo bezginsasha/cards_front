@@ -14,11 +14,11 @@ var pilesSlice = createSlice({
 			state.splice(index, 1);
 		},
 		insertPile: (state, action) => {
-		    var newPile = action.payload;
+			var newPile = action.payload;
 
-		    if (state.indexOf(newPile) === -1) {
-                state.push(newPile);
-            }
+			if (state.indexOf(newPile) === -1) {
+				state.push(newPile);
+			}
 		},
 		updatePile: (state, action) => {
 			var oldName = action.payload.oldName;
