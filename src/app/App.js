@@ -16,6 +16,7 @@ import GameForm from '../interface/forms/GameForm';
 import HelpForm from '../interface/forms/HelpForm';
 
 import { initiateCards } from '../state/cardsSlice'
+import { initiatePiles } from '../state/pilesSlice'
 import request from "../util/request";
 
 export const FORMS = {
@@ -57,6 +58,10 @@ function App() {
 		request({
 			url: 'cards/get_all',
 			callback: data => dispatch(initiateCards(data))
+		});
+		request({
+			url: 'piles/get_all',
+			callback: data => dispatch(initiatePiles(data))
 		});
 	}, []);
 
