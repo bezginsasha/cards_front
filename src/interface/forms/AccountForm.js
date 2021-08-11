@@ -1,16 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CommonForm.css';
 import OverForm from './OverForm';
+import request from '../../util/request'
 
 function AccountForm(props) {
+	var [ username, setUsername ] = useState('');
+	var [ password, setPassword ] = useState('');
+
+	function usernameInputHandler(event) {
+		setUsername(event.target.value);
+	}
+
+	function passwordInputHandler(event) {
+		setPassword(event.target.value);
+	}
+
+	function registerClickHandler(event) {
+		var form = new FormData();
+		form.set('username', username);
+		form.set('password', password);
+
+		request({
+			url: 'auth/register',
+			method: 'POST',
+			body: form
+		});
+	}
+
 	return (
 		<OverForm>
 			<p>{ props.title }</p>
-			<input type="text" className="over-form-input" placeholder="Username" />
-			<input type="text" className="over-form-input" placeholder="Password" />
+			<input
+				type="text"
+				value={ username }
+				onChange={ usernameInputHandler }
+				className="over-form-input"
+				placeholder="Username"
+			/>
+			<input
+				type="text"
+				value={ password }
+				onChange={ passwordInputHandler }
+				className="over-form-input"
+				placeholder="Password"
+			/>
 			<br />
-			<input type="button" value="Sign In" className="over-form-button" />
-			<input type="button" value="Sign Up" className="over-form-button" />
+			<input
+				type="button"
+				value="Login"
+				className="over-form-button"
+			/>
+			<input
+				type="button"
+				value="Register"
+				onClick={ registerClickHandler }
+				className="over-form-button"
+			/>
 		</OverForm>
 	);
 }
