@@ -32,6 +32,23 @@ function AccountForm(props) {
 		});
 	}
 
+	function loginClickHandler(event) {
+		var form = new FormData();
+		form.set('username', username);
+		form.set('password', password);
+
+		request({
+			url: 'auth/login',
+			method: 'POST',
+			body: form,
+			callback: data => {
+				if (data.result !== 'ok') {
+					alert(data.result);
+				}
+			}
+		})
+	}
+
 	return (
 		<OverForm>
 			<p>{ props.title }</p>
@@ -53,6 +70,7 @@ function AccountForm(props) {
 			<input
 				type="button"
 				value="Login"
+				onClick={ loginClickHandler }
 				className="over-form-button"
 			/>
 			<input
