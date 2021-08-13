@@ -23,7 +23,12 @@ function AccountForm(props) {
 		request({
 			url: 'auth/register',
 			method: 'POST',
-			body: form
+			body: form,
+			callback: data => {
+				if (data.result !== 'ok') {
+					alert(data.result);
+				}
+			}
 		});
 	}
 
