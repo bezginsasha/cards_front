@@ -18,6 +18,7 @@ import HelpForm from '../interface/forms/HelpForm';
 import { initiateCards } from '../state/cardsSlice'
 import { initiatePiles } from '../state/pilesSlice'
 import request from "../util/request";
+import setCurrentUserFromCookies from "../util/setCurrentUserFromCookies";
 
 export const FORMS = {
 	newCard: 'New card',
@@ -63,6 +64,7 @@ function App() {
 			url: 'piles/get_all',
 			callback: data => dispatch(initiatePiles(data))
 		});
+		setCurrentUserFromCookies(dispatch);
 	}, []);
 
 	var currentFormElement = null;

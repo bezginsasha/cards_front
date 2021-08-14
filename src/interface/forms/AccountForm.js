@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
 import './CommonForm.css';
 import OverForm from './OverForm';
 import request from '../../util/request'
+import setCurrentUserFromCookies from '../../util/setCurrentUserFromCookies'
 
 function AccountForm(props) {
 	var [ username, setUsername ] = useState('');
 	var [ password, setPassword ] = useState('');
+	var dispatch = useDispatch();
 
 	function usernameInputHandler(event) {
 		setUsername(event.target.value);
@@ -27,6 +30,8 @@ function AccountForm(props) {
 			callback: data => {
 				if (data.result !== 'ok') {
 					alert(data.result);
+				} else {
+					setCurrentUserFromCookies(dispatch);
 				}
 			}
 		});
@@ -44,9 +49,11 @@ function AccountForm(props) {
 			callback: data => {
 				if (data.result !== 'ok') {
 					alert(data.result);
+				} else {
+					setCurrentUserFromCookies(dispatch);
 				}
 			}
-		})
+		});
 	}
 
 	return (
