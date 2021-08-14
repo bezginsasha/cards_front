@@ -33,6 +33,7 @@ function AccountForm(props) {
 				} else {
 					setCurrentUserFromCookies(dispatch);
 				}
+				props.closeForm();
 			}
 		});
 	}
@@ -52,6 +53,7 @@ function AccountForm(props) {
 				} else {
 					setCurrentUserFromCookies(dispatch);
 				}
+				props.closeForm();
 			}
 		});
 	}

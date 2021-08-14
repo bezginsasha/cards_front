@@ -83,7 +83,7 @@ function App() {
 			currentFormElement = <PilesForm title={ FORMS.piles } />;
 			break;
 		case FORMS.account:
-			currentFormElement = <AccountForm title={ FORMS.account } />;
+			currentFormElement = <AccountForm title={ FORMS.account } closeForm={ closeForm } />;
 			break;
 		case FORMS.help:
 			currentFormElement = <HelpForm title={ FORMS.help } />;
