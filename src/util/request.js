@@ -12,6 +12,7 @@ function request(params) {
 
 	var response = {
 		method: method,
+		credentials: 'include',
 		headers: {
 			Origin: 'http://localhost:3000/'
 		}
