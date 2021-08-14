@@ -58,6 +58,7 @@ function NewCardForm(props) {
 				className="over-input-textarea"
 				placeholder="Original word"
 				rows="3"
+				autoFocus={ true }
 			/>
 			<br/>
 			<textarea

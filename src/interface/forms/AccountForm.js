@@ -58,6 +58,7 @@ function AccountForm(props) {
 				onChange={ usernameInputHandler }
 				className="over-form-input"
 				placeholder="Username"
+				autoFocus={ true }
 			/>
 			<input
 				type="text"
