@@ -18,7 +18,7 @@ function CardList(props) {
 	if (cards != null) {
 		cardsElements = cards.map( card =>
 			<CardListItem
-				value={card.original_word}
+				value={card.originalWord}
 				key={ card.id }
 				id={ card.id }
 				visible={ card.id === idOfVisibleContextMenu }

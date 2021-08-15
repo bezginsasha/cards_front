@@ -7,8 +7,8 @@ import request from "../../util/request";
 function UpdateCardForm(props) {
 	var dispatch = useDispatch();
 	var card = useSelector(state => state.cards.find(card => card.id === props.cardId));
-	var [ originalWord, setOriginalWord ] = useState(card.original_word);
-	var [ translatedWord, setTranslatedWord ] = useState(card.translated_word);
+	var [ originalWord, setOriginalWord ] = useState(card.originalWord);
+	var [ translatedWord, setTranslatedWord ] = useState(card.translatedWord);
 
 	function originalWordInputHandler(event) {
 		setOriginalWord(event.target.value);
@@ -24,8 +24,8 @@ function UpdateCardForm(props) {
 
 		var form = new FormData();
 		form.set('id', props.cardId);
-		form.set('original_word', originalWord);
-		form.set('translated_word', translatedWord);
+		form.set('originalWord', originalWord);
+		form.set('translatedWord', translatedWord);
 
 		request({
 			url: 'cards/update',
@@ -35,8 +35,8 @@ function UpdateCardForm(props) {
 				console.log(data);
 				var card = {
 					id: props.cardId,
-					original_word: originalWord,
-					translated_word: translatedWord
+					originalWord: originalWord,
+					translatedWord: translatedWord
 				};
 
 				dispatch(updateCard(card));

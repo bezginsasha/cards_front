@@ -16,7 +16,7 @@ function PilesFormRow(props) {
 		dispatch(deletePile(props.name));
 
 		var form = new FormData();
-		form.set('pile_name', pileName);
+		form.set('pileName', pileName);
 
 		request({
 			url: 'piles/delete',
@@ -40,7 +40,7 @@ function PilesFormRow(props) {
 			dispatch(insertPile(pileName));
 
 			var form = new FormData();
-			form.set('pile_name', pileName);
+			form.set('pileName', pileName);
 
 			request({
 				url: 'piles/add',

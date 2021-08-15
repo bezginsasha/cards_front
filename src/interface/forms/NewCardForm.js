@@ -18,8 +18,8 @@ function NewCardForm(props) {
 			return;
 
 		var form = new FormData();
-		form.set('original_word', originalWord);
-		form.set('translated_word', translatedWord);
+		form.set('originalWord', originalWord);
+		form.set('translatedWord', translatedWord);
 
 		request({
 			url: 'cards/add',
@@ -29,8 +29,8 @@ function NewCardForm(props) {
 				console.log(data.id);
 				var card = {
 					id: data.id,
-					original_word: originalWord,
-					translated_word: translatedWord
+					originalWord: originalWord,
+					translatedWord: translatedWord
 				};
 
 				dispatch(insertCard(card));
