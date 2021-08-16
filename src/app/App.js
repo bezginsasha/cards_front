@@ -15,9 +15,7 @@ import AccountForm from '../interface/forms/AccountForm';
 import GameForm from '../interface/forms/GameForm';
 import HelpForm from '../interface/forms/HelpForm';
 
-import { initiateCards } from '../state/cardsSlice'
-import { initiatePiles } from '../state/pilesSlice'
-import request from "../util/request";
+import updateCardsAndPiles from "../util/updateCardsAndPiles";
 import setCurrentUserFromCookies from "../util/setCurrentUserFromCookies";
 
 export const FORMS = {
@@ -56,14 +54,7 @@ function App() {
 	}
 
 	useEffect(() => {
-		request({
-			url: 'cards/get_all',
-			callback: data => dispatch(initiateCards(data))
-		});
-		request({
-			url: 'piles/get_all',
-			callback: data => dispatch(initiatePiles(data))
-		});
+		updateCardsAndPiles(dispatch);
 		setCurrentUserFromCookies(dispatch);
 	}, []);
 

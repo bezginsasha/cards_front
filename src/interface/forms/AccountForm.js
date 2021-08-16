@@ -4,6 +4,7 @@ import './CommonForm.css';
 import OverForm from './OverForm';
 import request from '../../util/request'
 import setCurrentUserFromCookies from '../../util/setCurrentUserFromCookies'
+import updateCardsAndPiles from "../../util/updateCardsAndPiles";
 
 function AccountForm(props) {
 	var [ username, setUsername ] = useState('');
@@ -33,6 +34,7 @@ function AccountForm(props) {
 					setWarning(data.result);
 				} else {
 					setCurrentUserFromCookies(dispatch);
+					updateCardsAndPiles(dispatch);
 					setWarning('');
 					props.closeForm();
 				}
@@ -54,6 +56,7 @@ function AccountForm(props) {
 					setWarning(data.result);
 				} else {
 					setCurrentUserFromCookies(dispatch);
+					updateCardsAndPiles(dispatch);
 					setWarning('');
 					props.closeForm();
 				}

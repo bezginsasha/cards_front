@@ -7,6 +7,8 @@ const cardsSlice = createSlice({
 	initialState,
 	reducers: {
 		initiateCards: (state, action) => {
+			// needs when user relogins
+			state.length = 0;
 			state.push(...action.payload);
 		},
 		insertCard: (state, action) => {
