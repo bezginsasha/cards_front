@@ -8,6 +8,7 @@ import setCurrentUserFromCookies from '../../util/setCurrentUserFromCookies'
 function AccountForm(props) {
 	var [ username, setUsername ] = useState('');
 	var [ password, setPassword ] = useState('');
+	var [ warning, setWarning] = useState('');
 	var dispatch = useDispatch();
 
 	function usernameInputHandler(event) {
@@ -29,9 +30,10 @@ function AccountForm(props) {
 			body: form,
 			callback: data => {
 				if (data.result !== 'ok') {
-					alert(data.result);
+					setWarning(data.result);
 				} else {
 					setCurrentUserFromCookies(dispatch);
+					setWarning('');
 					props.closeForm();
 				}
 			}
@@ -49,9 +51,10 @@ function AccountForm(props) {
 			body: form,
 			callback: data => {
 				if (data.result !== 'ok') {
-					alert(data.result);
+					setWarning(data.result);
 				} else {
 					setCurrentUserFromCookies(dispatch);
+					setWarning('');
 					props.closeForm();
 				}
 			}
@@ -63,9 +66,15 @@ function AccountForm(props) {
 		currentUser = ' (' + currentUser + ')';
 	}
 
+	var displayWarning = warning;
+	if (displayWarning) {
+		displayWarning = <p className="warning" >{ displayWarning }</p>
+	}
+
 	return (
 		<OverForm>
 			<p>{ props.title }{ currentUser }</p>
+			{ displayWarning }
 			<input
 				type="text"
 				value={ username }

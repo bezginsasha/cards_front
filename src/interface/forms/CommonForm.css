@@ -34,3 +34,8 @@
 .over-form-button:hover {
 	background: #d4d4d4;
 }
+
+.warning {
+	color: red;
+	margin: 10px 0;
+}
