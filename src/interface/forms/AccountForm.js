@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './CommonForm.css';
 import OverForm from './OverForm';
 import request from '../../util/request'
@@ -58,9 +58,14 @@ function AccountForm(props) {
 		});
 	}
 
+	var currentUser = useSelector(state => state.currentUser.name );
+	if (currentUser) {
+		currentUser = ' (' + currentUser + ')';
+	}
+
 	return (
 		<OverForm>
-			<p>{ props.title }</p>
+			<p>{ props.title }{ currentUser }</p>
 			<input
 				type="text"
 				value={ username }
