@@ -32,8 +32,8 @@ function AccountForm(props) {
 					alert(data.result);
 				} else {
 					setCurrentUserFromCookies(dispatch);
+					props.closeForm();
 				}
-				props.closeForm();
 			}
 		});
 	}
@@ -52,8 +52,8 @@ function AccountForm(props) {
 					alert(data.result);
 				} else {
 					setCurrentUserFromCookies(dispatch);
+					props.closeForm();
 				}
-				props.closeForm();
 			}
 		});
 	}
