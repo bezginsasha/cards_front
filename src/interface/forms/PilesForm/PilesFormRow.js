@@ -31,15 +31,29 @@ function PilesFormRow(props) {
 			props.hideNewPileRow();
 		}
 
+		var form = new FormData();
+
 		if (props.name) {
+			var oldPileName = props.name;
+			var newPileName = pileName;
+
 			dispatch(updatePile({
-				oldName: props.name,
-				newName: pileName
+				oldName: oldPileName,
+				newName: newPileName
 			}));
+
+			form.set('oldPileName', oldPileName);
+			form.set('newPileName', newPileName);
+
+			request({
+				url: 'piles/update',
+				method: 'POST',
+				body: form,
+				callback: (data) => console.log(data)
+			});
 		} else {
 			dispatch(insertPile(pileName));
 
-			var form = new FormData();
 			form.set('pileName', pileName);
 
 			request({
