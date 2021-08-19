@@ -91,7 +91,14 @@ function App() {
 		);
 	}
 
-	var pilesElements = piles.map(pile => <Pile name={ pile } key={ pile } />);
+	var currentPile = useSelector(state => state.currentPile.pileName );
+	var pilesElements = piles.map(pile =>
+			<Pile
+				name={ pile }
+				key={ pile }
+				currentPile={ currentPile }
+			/>
+		);
 
 	return (
 		<React.Fragment>

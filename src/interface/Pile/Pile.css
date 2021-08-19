@@ -8,3 +8,7 @@
 .pile:hover {
 	background: #f0f0f0;
 }
+
+.pile-selected {
+	background: #f0f0f0;
+}
