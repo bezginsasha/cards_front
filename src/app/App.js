@@ -6,7 +6,7 @@ import Search from '../interface/Search/Search';
 import HeaderButton from '../interface/HeaderButton/HeaderButton';
 import CardList from '../interface/WordList/CardList';
 import OverContainer from '../interface/OverContainer/OverContainer';
-import Pile from '../Pile'
+import Pile from '../interface/Pile/Pile'
 
 import NewCardForm from '../interface/forms/NewCardForm';
 import UpdateCardForm from '../interface/forms/UpdateCardForm';
