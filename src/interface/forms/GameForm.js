@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux'
 import './CommonForm.css';
 import OverForm from './OverForm';
 import { setPile } from '../../state/currentPileSlice'
+import request from "../../util/request";
+import setCurrentUserFromCookies from "../../util/setCurrentUserFromCookies";
+import updateCardsAndPiles from "../../util/updateCardsAndPiles";
 
 function GameForm(props) {
 	var dispatch = useDispatch();
@@ -15,6 +18,19 @@ function GameForm(props) {
 
 	function selectChangeHandler(event) {
 		dispatch(setPile(event.target.value));
+	}
+
+	function moveCardToPile(newPile) {
+		var form = new FormData();
+		form.set('cardId', randomCard.id);
+		form.set('pileName', newPile);
+
+		request({
+			url: 'cards/move',
+			method: 'POST',
+			body: form,
+			callback: data => console.log(data)
+		});
 	}
 
 	return (
