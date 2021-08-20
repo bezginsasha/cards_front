@@ -1,15 +1,40 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 import './CommonForm.css';
 import OverForm from './OverForm';
 
 function GameForm(props) {
+	var cards = useSelector(state => state.cards);
+	var randomCardIndex = Math.floor(Math.random() * cards.length);
+	var randomCard = cards[randomCardIndex];
+	
+	var piles = useSelector(state => state.piles);
+
 	return (
 		<OverForm>
 			<p>{ props.title }</p>
-			<p>kunteynir</p>
-			<input type="button" value="Easy" className="over-form-button" />
-			<input type="button" value="Show" className="over-form-button" />
-			<input type="button" value="Hard" className="over-form-button" />
+			<select>
+				{
+					piles.map( pile =>
+						<option
+							value={ pile }
+							key={ pile }
+						>{ pile }</option>
+					)
+				}
+			</select>
+			<p>{ randomCard.originalWord }</p>
+			{
+				piles.map( pile =>
+					<input
+						type="button"
+						value={ 'To ' + pile }
+						key={ pile }
+						onClick={ () => moveCardToPile(pile) }
+						className="over-form-button"
+					/>
+				)
+			}
 		</OverForm>
 	);
 }

@@ -39,3 +39,15 @@
 	color: red;
 	margin: 10px 0;
 }
+
+select {
+	border: #a5a5a5 1px solid;
+	/*background: none;*/
+}
+select:focus {
+	outline: none;
+}
+
+option {
+	border: none;
+}
