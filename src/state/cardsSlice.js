@@ -24,10 +24,16 @@ const cardsSlice = createSlice({
 			var card = state.find(card => card.id === action.payload);
 			var index = state.indexOf(card);
 			state.splice(index, 1);
+		},
+		moveCard: (state, action) => {
+			var cardId = action.payload.cardId;
+			var pileName = action.payload.pileName;
+			var card = state.find(card => card.id === cardId);
+			card.pileName = pileName;
 		}
 	}
 });
 
-export const { initiateCards, insertCard, updateCard, deleteCard } = cardsSlice.actions;
+export const { initiateCards, insertCard, updateCard, deleteCard, moveCard } = cardsSlice.actions;
 
 export default cardsSlice.reducer
