@@ -9,13 +9,16 @@ import request from "../../util/request";
 
 function GameForm(props) {
 	var dispatch = useDispatch();
-	var cards = useSelector(state => state.cards);
+	var currentPileFromRedux = useSelector(state => state.currentPile.pileName );
+	var cards = useSelector(state => state.cards)
+				.filter(card => card.pileName === currentPileFromRedux);
 
 	var [ randomIndex, setRandomIndex ] = useState(0);
-	var randomCard = cards[randomIndex];
-
+	var randomCard;
+	var randomCardComponent;
+	var selectPilesComponent;
+	var moveCardButtonsComponent;
 	var piles = useSelector(state => state.piles);
-	var currentPileFromRedux = useSelector(state => state.currentPile.pileName );
 
 	function selectChangeHandler(event) {
 		dispatch(setPile(event.target.value));
@@ -40,31 +43,44 @@ function GameForm(props) {
 		});
 	}
 
+	selectPilesComponent = (
+		<select onChange={ selectChangeHandler } value={ currentPileFromRedux } >
+			{
+				piles.map( pile =>
+					<option
+						value={ pile }
+						key={ pile }
+					>{ pile }</option>
+				)
+			}
+		</select>
+	);
+
+	if (cards.length > 0) {
+		randomCard = cards[randomIndex];
+		randomCardComponent = <p>{ randomCard.originalWord }</p>;
+
+		moveCardButtonsComponent = (
+			piles.map( pile =>
+				<input
+					type="button"
+					value={ 'To ' + pile }
+					key={ pile }
+					onClick={ () => moveCardToPile(pile) }
+					className="over-form-button"
+				/>
+			)
+		);
+	} else {
+		randomCardComponent = <p>There are no words in selected pile</p>
+	}
+
 	return (
 		<OverForm>
 			<p>{ props.title }</p>
-			<select onChange={ selectChangeHandler } value={ currentPileFromRedux } >
-				{
-					piles.map( pile =>
-						<option
-							value={ pile }
-							key={ pile }
-						>{ pile }</option>
-					)
-				}
-			</select>
-			<p>{ randomCard.originalWord }</p>
-			{
-				piles.map( pile =>
-					<input
-						type="button"
-						value={ 'To ' + pile }
-						key={ pile }
-						onClick={ () => moveCardToPile(pile) }
-						className="over-form-button"
-					/>
-				)
-			}
+			{ selectPilesComponent }
+			{ randomCardComponent }
+			{ moveCardButtonsComponent }
 		</OverForm>
 	);
 }
