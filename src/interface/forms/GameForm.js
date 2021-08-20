@@ -6,8 +6,6 @@ import OverForm from './OverForm';
 import { setPile } from '../../state/currentPileSlice'
 import { moveCard } from "../../state/cardsSlice";
 import request from "../../util/request";
-import setCurrentUserFromCookies from "../../util/setCurrentUserFromCookies";
-import updateCardsAndPiles from "../../util/updateCardsAndPiles";
 
 function GameForm(props) {
 	var dispatch = useDispatch();
