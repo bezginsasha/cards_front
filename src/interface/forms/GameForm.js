@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import './CommonForm.css';
@@ -10,8 +10,10 @@ import request from "../../util/request";
 function GameForm(props) {
 	var dispatch = useDispatch();
 	var cards = useSelector(state => state.cards);
-	var randomCardIndex = Math.floor(Math.random() * cards.length);
-	var randomCard = cards[randomCardIndex];
+
+	var [ randomIndex, setRandomIndex ] = useState(0);
+	var randomCard = cards[randomIndex];
+
 	var piles = useSelector(state => state.piles);
 	var currentPileFromRedux = useSelector(state => state.currentPile.pileName );
 
@@ -23,6 +25,7 @@ function GameForm(props) {
 		var form = new FormData();
 		form.set('cardId', randomCard.id);
 		form.set('pileName', newPile);
+		setRandomIndex(getRandomIndex(randomIndex, cards.length));
 
 		request({
 			url: 'cards/move',
@@ -64,6 +67,15 @@ function GameForm(props) {
 			}
 		</OverForm>
 	);
+}
+
+function getRandomIndex(currentIndex, cardsLength) {
+	var newIndex;
+	while (true) {
+		newIndex = Math.floor(Math.random() * cardsLength);
+		if (newIndex !== currentIndex)
+			return newIndex;
+	}
 }
 
 export default GameForm;
