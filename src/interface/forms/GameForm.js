@@ -14,11 +14,13 @@ function GameForm(props) {
 	var dispatch = useDispatch();
 	var currentPileFromRedux = useSelector(state => state.currentPile.pileName );
 	var [ newIndex, setNewIndex ] = useState(0);
+	var [ displayTranslate, setDisplayTranslate ] = useState(false);
 	var card;
 	var cardComponent;
 	var selectPilesComponent;
 	var moveCardButtonsComponent;
 	var piles = useSelector(state => state.piles);
+
 
 	// This variable needs when user selected ALL_CARDS_PILE
 	// because ALL_CARDS_PILE in false pile needed to displaying in app component only
@@ -41,6 +43,8 @@ function GameForm(props) {
 			cardId: card.id,
 			pileName: newPile
 		}));
+
+		setDisplayTranslate(false);
 
 		// This strange constructor needs because i need generate new index
 		// based on updated state.cards, but in usual situation i can access
@@ -94,7 +98,14 @@ function GameForm(props) {
 		<OverForm>
 			<p>{ props.title }</p>
 			{ selectPilesComponent }
+			<input
+				type="button"
+				value={ displayTranslate ? 'Hide translate' : 'Show translate' }
+				className="over-form-button"
+				onClick={ () => setDisplayTranslate(!displayTranslate) }
+			/>
 			{ cardComponent }
+			{ displayTranslate ? <p>{ card.translatedWord }</p> : null }
 			{ moveCardButtonsComponent }
 		</OverForm>
 	);
