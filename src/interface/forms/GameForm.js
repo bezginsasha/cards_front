@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import './CommonForm.css';
@@ -7,39 +7,49 @@ import { setPile } from '../../state/currentPileSlice'
 import { moveCard } from "../../state/cardsSlice";
 import request from "../../util/request";
 
+import store from '../../app/store'
+
 function GameForm(props) {
 	var dispatch = useDispatch();
 	var currentPileFromRedux = useSelector(state => state.currentPile.pileName );
 	var cards = useSelector(state => state.cards)
 				.filter(card => card.pileName === currentPileFromRedux);
 
-	var [ randomIndex, setRandomIndex ] = useState(0);
-	var randomCard;
-	var randomCardComponent;
+	var [ newIndex, setNewIndex ] = useState(0);
+	var card;
+	var cardComponent;
 	var selectPilesComponent;
 	var moveCardButtonsComponent;
 	var piles = useSelector(state => state.piles);
 
 	function selectChangeHandler(event) {
 		dispatch(setPile(event.target.value));
+		setNewIndex(0);
 	}
 
 	function moveCardToPile(newPile) {
 		var form = new FormData();
-		form.set('cardId', randomCard.id);
+		form.set('cardId', card.id);
 		form.set('pileName', newPile);
-		setRandomIndex(getRandomIndex(randomIndex, cards.length));
+
+		dispatch(moveCard({
+			cardId: card.id,
+			pileName: newPile
+		}));
+
+		// This strange constructor needs because i need generate new index
+		// based on updated state.cards, but in usual situation i can access
+		// to state.cards only with rerender component, therefore in beginning
+		// of function. But i need to know new state.cards there. And therefore
+		// i imported store object to get new state. And therefore
+		// i generate new index in correct way on updated state.cards
+		var tempCards = store.getState().cards.filter(card => card.pileName === currentPileFromRedux);
+		setNewIndex(getNewIndex(tempCards.length));
 
 		request({
 			url: 'cards/move',
 			method: 'POST',
-			body: form,
-			callback: data => {
-				dispatch(moveCard({
-					cardId: randomCard.id,
-					pileName: newPile
-				}));
-			}
+			body: form
 		});
 	}
 
@@ -57,8 +67,8 @@ function GameForm(props) {
 	);
 
 	if (cards.length > 0) {
-		randomCard = cards[randomIndex];
-		randomCardComponent = <p>{ randomCard.originalWord }</p>;
+		card = cards[newIndex];
+		cardComponent = <p>{ card.originalWord }</p>;
 
 		moveCardButtonsComponent = (
 			piles.map( pile =>
@@ -72,24 +82,35 @@ function GameForm(props) {
 			)
 		);
 	} else {
-		randomCardComponent = <p>There are no words in selected pile</p>
+		cardComponent = <p>There are no words in selected pile</p>
 	}
 
 	return (
 		<OverForm>
 			<p>{ props.title }</p>
 			{ selectPilesComponent }
-			{ randomCardComponent }
+			{ cardComponent }
 			{ moveCardButtonsComponent }
 		</OverForm>
 	);
 }
 
+var getNewIndex = function() {
+	var lastIndex = 0;
+	return function(cardsLength) {
+		lastIndex = getRandomIndex(lastIndex, cardsLength);
+		return lastIndex;
+	};
+}();
+
 function getRandomIndex(currentIndex, cardsLength) {
+	if (cardsLength < 2)
+		return 0;
+
 	var newIndex;
 	while (true) {
 		newIndex = Math.floor(Math.random() * cardsLength);
-		if (newIndex !== currentIndex)
+		if ((newIndex !== currentIndex) && (newIndex < cardsLength))
 			return newIndex;
 	}
 }
