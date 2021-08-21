@@ -33,8 +33,10 @@ function App() {
 	var [ currentForm, setCurrentForm ] = useState(FORMS.none);
 	var [ cardIdForUpdate, setCardIdForUpdate ] = useState('');
 	var dispatch = useDispatch();
-	var cards = useSelector(state => state.cards);
 	var piles = useSelector(state => state.piles);
+	var currentPile = useSelector(state => state.currentPile.pileName );
+	var cards = useSelector(state => state.cards);
+	cards = cards.filter(card => card.pileName === currentPile);
 
 	function headerButtonHandler(event, form) {
 		setCurrentForm(form);
@@ -91,7 +93,6 @@ function App() {
 		);
 	}
 
-	var currentPile = useSelector(state => state.currentPile.pileName );
 	var pilesElements = piles.map(pile =>
 			<Pile
 				name={ pile }
