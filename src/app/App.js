@@ -22,11 +22,15 @@ import setCurrentUserFromCookies from "../util/setCurrentUserFromCookies";
 function App() {
 	var [ currentForm, setCurrentForm ] = useState(FORMS.none);
 	var [ cardIdForUpdate, setCardIdForUpdate ] = useState('');
+	var [ searchFilter, setSearchFilter ] = useState('');
 	var dispatch = useDispatch();
 	var piles = useSelector(state => state.piles);
 	var currentPile = useSelector(state => state.currentPile.pileName );
+
 	var cards = useSelector(state => state.cards);
 	cards = cards.filter(card => card.pileName === currentPile || currentPile === ALL_CARDS_PILE);
+	var reg = new RegExp('.*' + searchFilter + '.*');
+	cards = cards.filter(card => reg.test(card.originalWord) );
 
 	function headerButtonHandler(event, form) {
 		setCurrentForm(form);
@@ -43,6 +47,10 @@ function App() {
 
 	function closeForm() {
 		setCurrentForm(FORMS.none);
+	}
+
+	function setFilter(filter) {
+		setSearchFilter(filter);
 	}
 
 	useEffect(() => {
@@ -102,7 +110,7 @@ function App() {
 				<HeaderButton form={ FORMS.account } handler={ headerButtonHandler } />
 			</section>
 			<hr />
-			<Search />
+			<Search filterCards={ setFilter } />
 			{ pilesElements }
 			<CardList cards={ cards } showUpdateCardForm={ showUpdateCardForm } />
 			{ currentFormElement }
