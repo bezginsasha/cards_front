@@ -2,6 +2,7 @@ import request from "./request";
 import {initiateCards} from "../state/cardsSlice";
 import {initiatePiles} from "../state/pilesSlice";
 import { setPile } from "../state/currentPileSlice";
+import { ALL_CARDS_PILE } from './constants';
 
 function updateCardsAndPiles(dispatch) {
 	request({
@@ -12,7 +13,7 @@ function updateCardsAndPiles(dispatch) {
 		url: 'piles/get_all',
 		callback: data => {
 			dispatch(initiatePiles(data));
-			dispatch(setPile(data[0]));
+			dispatch(setPile(ALL_CARDS_PILE));
 		}
 	});
 }

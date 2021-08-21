@@ -6,21 +6,26 @@ import OverForm from './OverForm';
 import { setPile } from '../../state/currentPileSlice'
 import { moveCard } from "../../state/cardsSlice";
 import request from "../../util/request";
+import { ALL_CARDS_PILE } from '../../util/constants';
 
 import store from '../../app/store'
 
 function GameForm(props) {
 	var dispatch = useDispatch();
 	var currentPileFromRedux = useSelector(state => state.currentPile.pileName );
-	var cards = useSelector(state => state.cards)
-				.filter(card => card.pileName === currentPileFromRedux);
-
 	var [ newIndex, setNewIndex ] = useState(0);
 	var card;
 	var cardComponent;
 	var selectPilesComponent;
 	var moveCardButtonsComponent;
 	var piles = useSelector(state => state.piles);
+	
+	// This variable needs when user selected ALL_CARDS_PILE
+	// because ALL_CARDS_PILE in false pile needed to displaying in app component only
+	// and in GameForm ALL_CARDS_PILE redundant
+	var currentPile = currentPileFromRedux === ALL_CARDS_PILE ? piles[0] : currentPileFromRedux;
+	var cards = useSelector(state => state.cards)
+		.filter(card => card.pileName === currentPile);
 
 	function selectChangeHandler(event) {
 		dispatch(setPile(event.target.value));
@@ -43,7 +48,7 @@ function GameForm(props) {
 		// of function. But i need to know new state.cards there. And therefore
 		// i imported store object to get new state. And therefore
 		// i generate new index in correct way on updated state.cards
-		var tempCards = store.getState().cards.filter(card => card.pileName === currentPileFromRedux);
+		var tempCards = store.getState().cards.filter(card => card.pileName === currentPile);
 		setNewIndex(getNewIndex(tempCards.length));
 
 		request({
@@ -54,7 +59,7 @@ function GameForm(props) {
 	}
 
 	selectPilesComponent = (
-		<select onChange={ selectChangeHandler } value={ currentPileFromRedux } >
+		<select onChange={ selectChangeHandler } value={ currentPile } >
 			{
 				piles.map( pile =>
 					<option

@@ -15,6 +15,7 @@ import AccountForm from '../interface/forms/AccountForm';
 import GameForm from '../interface/forms/GameForm';
 import HelpForm from '../interface/forms/HelpForm';
 
+import { ALL_CARDS_PILE } from '../util/constants';
 import updateCardsAndPiles from "../util/updateCardsAndPiles";
 import setCurrentUserFromCookies from "../util/setCurrentUserFromCookies";
 
@@ -36,7 +37,7 @@ function App() {
 	var piles = useSelector(state => state.piles);
 	var currentPile = useSelector(state => state.currentPile.pileName );
 	var cards = useSelector(state => state.cards);
-	cards = cards.filter(card => card.pileName === currentPile);
+	cards = cards.filter(card => card.pileName === currentPile || currentPile === ALL_CARDS_PILE);
 
 	function headerButtonHandler(event, form) {
 		setCurrentForm(form);
@@ -93,7 +94,7 @@ function App() {
 		);
 	}
 
-	var pilesElements = piles.map(pile =>
+	var pilesElements = [ALL_CARDS_PILE].concat(piles).map(pile =>
 			<Pile
 				name={ pile }
 				key={ pile }
