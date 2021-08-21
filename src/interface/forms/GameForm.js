@@ -19,7 +19,7 @@ function GameForm(props) {
 	var selectPilesComponent;
 	var moveCardButtonsComponent;
 	var piles = useSelector(state => state.piles);
-	
+
 	// This variable needs when user selected ALL_CARDS_PILE
 	// because ALL_CARDS_PILE in false pile needed to displaying in app component only
 	// and in GameForm ALL_CARDS_PILE redundant

@@ -15,20 +15,9 @@ import AccountForm from '../interface/forms/AccountForm';
 import GameForm from '../interface/forms/GameForm';
 import HelpForm from '../interface/forms/HelpForm';
 
-import { ALL_CARDS_PILE } from '../util/constants';
+import { ALL_CARDS_PILE, FORMS } from '../util/constants';
 import updateCardsAndPiles from "../util/updateCardsAndPiles";
 import setCurrentUserFromCookies from "../util/setCurrentUserFromCookies";
-
-export const FORMS = {
-	newCard: 'New card',
-	updateCard: 'Updating card',
-	game: 'Game',
-	piles: 'Piles',
-	help: 'Help',
-	import: 'Import',
-	account: 'Account',
-	none: 'None',
-};
 
 function App() {
 	var [ currentForm, setCurrentForm ] = useState(FORMS.none);
