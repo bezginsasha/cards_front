@@ -97,16 +97,18 @@ function GameForm(props) {
 	return (
 		<OverForm>
 			<p>{ props.title }</p>
-			{ selectPilesComponent }
+			Current pile: { selectPilesComponent }
 			<input
 				type="button"
 				value={ displayTranslate ? 'Hide translate' : 'Show translate' }
 				className="over-form-button"
 				onClick={ () => setDisplayTranslate(!displayTranslate) }
 			/>
+			<br/>
+			<br/>
+			{ moveCardButtonsComponent }
 			{ cardComponent }
 			{ displayTranslate ? <p>{ card.translatedWord }</p> : null }
-			{ moveCardButtonsComponent }
 		</OverForm>
 	);
 }
