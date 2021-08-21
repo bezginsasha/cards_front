@@ -30,7 +30,8 @@ function NewCardForm(props) {
 				var card = {
 					id: data.id,
 					originalWord: originalWord,
-					translatedWord: translatedWord
+					translatedWord: translatedWord,
+					pileName: 'default'
 				};
 
 				dispatch(insertCard(card));
