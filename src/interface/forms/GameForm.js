@@ -94,21 +94,32 @@ function GameForm(props) {
 		cardComponent = <p>There are no words in selected pile</p>
 	}
 
+	function handler(event) {
+		if (event.key === 's' && cards.length > 0)
+			setDisplayTranslate(true);
+	}
+
 	return (
 		<OverForm>
-			<p>{ props.title }</p>
-			Current pile: { selectPilesComponent }
-			<input
-				type="button"
-				value={ displayTranslate ? 'Hide translate' : 'Show translate' }
-				className="over-form-button"
-				onClick={ () => setDisplayTranslate(!displayTranslate) }
-			/>
-			<br/>
-			<br/>
-			{ moveCardButtonsComponent }
-			{ cardComponent }
-			{ displayTranslate ? <p>{ card.translatedWord }</p> : null }
+			{/* tabIndex needs to make div handle key events */}
+			<div tabIndex={0} onKeyUp={ handler }>
+				<p>{ props.title }</p>
+				Current pile: { selectPilesComponent }
+				<input
+					type="button"
+					// autoFocus needs to get focus on form to handle keys
+					// autoFocus on input because it doesn't work with div
+					autoFocus={ true }
+					value={ displayTranslate ? 'Hide translate' : 'Show translate' }
+					className="over-form-button"
+					onClick={ () => setDisplayTranslate(!displayTranslate) }
+				/>
+				<br/>
+				<br/>
+				{ moveCardButtonsComponent }
+				{ cardComponent }
+				{ displayTranslate ? <p>{ card.translatedWord }</p> : null }
+			</div>
 		</OverForm>
 	);
 }
