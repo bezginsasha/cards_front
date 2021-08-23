@@ -8,7 +8,7 @@ function ContextMenu(props) {
 
 	function deleteCardHandler() {
 		var form = new FormData();
-		form.set('id', props.cardId);
+		form.set('id', props.card.id);
 
 		request({
 			url: 'cards/delete',
@@ -16,13 +16,13 @@ function ContextMenu(props) {
 			body: form,
 			callback: data => {
 				console.log(data);
-				dispatch(deleteCard(props.cardId));
+				dispatch(deleteCard(props.card.id));
 			}
 		});
 	}
 
 	function showUpdateCardFormClick(event) {
-		props.showUpdateCardForm(props.cardId);
+		props.showUpdateCardForm(props.card.id);
 	}
 
 	return (

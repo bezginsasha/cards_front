@@ -10,21 +10,21 @@ function CardListItem(props) {
 
 	function contextMenuClickHandler(event) {
 		event.stopPropagation();
-		props.contextMenuClickHandler(props.id);
+		props.contextMenuClickHandler(props.card.id);
 		setLeft(event.clientX);
 	}
 
 	var contextMenuElement = (
 		<ContextMenu
 			left={ left }
-			cardId={ props.id }
+			card={ props.card }
 			showUpdateCardForm={ props.showUpdateCardForm }
 		/>
 	);
 
 	return (
 		<div className="card-list-item">
-			{ props.value }
+			{ props.card.originalWord }
 			{ props.visible ? contextMenuElement : null }
 			<img src={ more } className="more-button" onClick={ contextMenuClickHandler } />
 		</div>
