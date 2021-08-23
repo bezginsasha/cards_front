@@ -4,6 +4,10 @@
 	color: #4c4c4c;
 }
 
+*:focus {
+	outline: none;
+}
+
 .container {
 	width: 700px;
 	margin: auto;
