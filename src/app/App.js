@@ -4,7 +4,7 @@ import './index.css';
 
 import Search from '../interface/Search/Search';
 import HeaderButton from '../interface/HeaderButton/HeaderButton';
-import CardList from '../interface/WordList/CardList';
+import CardList from '../interface/CardList/CardList';
 import OverContainer from '../interface/OverContainer/OverContainer';
 import Pile from '../interface/Pile/Pile'
 
