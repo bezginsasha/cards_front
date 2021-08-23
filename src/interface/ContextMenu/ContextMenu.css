@@ -1,14 +1,14 @@
 .context-menu {
+	display: flex;
+	flex-direction: column;
 	position: absolute;
 	left: 100px;
-	width: 60px;
 	border: 1px #878787 solid;
 	background: #e2e2e2;
 	user-select: none;
 }
 
 .context-menu-button {
-	width: 60px;
 	background: #e2e2e2;
 	border: none;
 }
