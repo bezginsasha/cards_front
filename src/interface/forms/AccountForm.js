@@ -42,7 +42,7 @@ function AccountForm(props) {
 		});
 	}
 
-	function loginClickHandler(event) {
+	function login(event) {
 		var form = new FormData();
 		form.set('username', username);
 		form.set('password', password);
@@ -64,6 +64,11 @@ function AccountForm(props) {
 		});
 	}
 
+	function loginByEnter(event) {
+		if (event.key === 'Enter')
+			login();
+	}
+
 	var currentUser = useSelector(state => state.currentUser.name );
 	if (currentUser) {
 		currentUser = ' (' + currentUser + ')';
@@ -82,6 +87,7 @@ function AccountForm(props) {
 				type="text"
 				value={ username }
 				onChange={ usernameInputHandler }
+				onKeyUp={ loginByEnter }
 				className="over-form-input"
 				placeholder="Username"
 				autoFocus={ true }
@@ -90,6 +96,7 @@ function AccountForm(props) {
 				type="text"
 				value={ password }
 				onChange={ passwordInputHandler }
+				onKeyUp={ loginByEnter }
 				className="over-form-input"
 				placeholder="Password"
 			/>
@@ -97,7 +104,8 @@ function AccountForm(props) {
 			<input
 				type="button"
 				value="Login"
-				onClick={ loginClickHandler }
+				onClick={ login }
+				onKeyUp={ login }
 				className="over-form-button"
 			/>
 			<input
