@@ -32,6 +32,7 @@ function GameForm(props) {
 	function selectChangeHandler(event) {
 		dispatch(setPile(event.target.value));
 		setNewIndex(0);
+		setDisplayTranslate(false);
 	}
 
 	function moveCardToPile(newPile) {
