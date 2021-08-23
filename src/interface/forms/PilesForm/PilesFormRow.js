@@ -2,6 +2,7 @@ import './PilesForm.css'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { deletePile, updatePile, insertPile } from '../../../state/pilesSlice'
+import { setDefaultPileInCardsWithDeletingPile } from '../../../state/cardsSlice'
 import request from '../../../util/request'
 
 function PilesFormRow(props) {
@@ -14,6 +15,7 @@ function PilesFormRow(props) {
 
 	function deleteClickHandler(event) {
 		dispatch(deletePile(props.name));
+		dispatch(setDefaultPileInCardsWithDeletingPile(props.name));
 
 		var form = new FormData();
 		form.set('pileName', pileName);

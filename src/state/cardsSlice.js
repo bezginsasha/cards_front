@@ -30,10 +30,17 @@ const cardsSlice = createSlice({
 			var pileName = action.payload.pileName;
 			var card = state.find(card => card.id === cardId);
 			card.pileName = pileName;
+		},
+		setDefaultPileInCardsWithDeletingPile: (state, action) => {
+			var deletingPileName = action.payload;
+			state.forEach(card => {
+				if (card.pileName === deletingPileName)
+					card.pileName = 'default';
+			});
 		}
 	}
 });
 
-export const { initiateCards, insertCard, updateCard, deleteCard, moveCard } = cardsSlice.actions;
+export const { initiateCards, insertCard, updateCard, deleteCard, moveCard, setDefaultPileInCardsWithDeletingPile } = cardsSlice.actions;
 
 export default cardsSlice.reducer
