@@ -56,6 +56,10 @@ function App() {
 	useEffect(() => {
 		updateCardsAndPiles(dispatch);
 		setCurrentUserFromCookies(dispatch);
+		document.addEventListener('keyup', event => {
+			if (event.key === 'Escape')
+				closeForm();
+		});
 	}, []);
 
 	var currentFormElement = null;
