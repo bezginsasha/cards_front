@@ -29,7 +29,7 @@ function App() {
 
 	var cards = useSelector(state => state.cards);
 	cards = cards.filter(card => card.pileName === currentPile || currentPile === ALL_CARDS_PILE);
-	var reg = new RegExp('.*' + searchFilter + '.*');
+	var reg = new RegExp('.*' + searchFilter + '.*', 'i');
 	cards = cards.filter(card => reg.test(card.originalWord) );
 
 	function headerButtonHandler(event, form) {
