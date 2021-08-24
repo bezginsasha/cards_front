@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import './CommonForm.css';
 import OverForm from './OverForm'
+import makeMarkDown from '../../util/makeMarkDown'
 
 import { insertCard } from '../../state/cardsSlice'
 import { updateOriginalWord, updateTranslatedWord, clearWords } from '../../state/inputWordsSlice'
@@ -12,6 +13,7 @@ function NewCardForm(props) {
 	var dispatch = useDispatch();
 	var originalWord = useSelector(state => state.inputWords.originalWord);
 	var translatedWord = useSelector(state => state.inputWords.translatedWord);
+	var [ render, setRender ] = useState(false);
 
 	function submitHandler() {
 		if (!originalWord || !translatedWord)
@@ -50,6 +52,26 @@ function NewCardForm(props) {
 		dispatch(updateTranslatedWord(event.target.value));
 	}
 
+	function changeRenderButtonState() {
+		setRender(!render);
+	}
+
+	var translatedWordElement = render ? (
+		<div
+			dangerouslySetInnerHTML={ makeMarkDown(translatedWord) }
+			className="over-input-textarea"
+		/>
+	) : (
+		<textarea
+			onInput={ translatedWordInputHandler }
+			value={ translatedWord }
+			className="over-input-textarea"
+			placeholder="Translated word with context"
+			rows="3"
+		/>
+	);
+
+
 	return (
 		<OverForm>
 			<p>{ props.title }</p>
@@ -61,19 +83,17 @@ function NewCardForm(props) {
 				rows="3"
 				autoFocus={ true }
 			/>
-			<br/>
-			<textarea
-				onInput={ translatedWordInputHandler }
-				value={ translatedWord }
-				className="over-input-textarea"
-				placeholder="Translated word with context"
-				rows="3"
-			/>
-			<br />
+			{ translatedWordElement }
 			<input
 				onClick={ submitHandler }
 				type="button"
 				value="Save"
+				className="over-form-button"
+			/>
+			<input
+				type="button"
+				value={ render ? 'Edit' : 'Render' }
+				onClick={ changeRenderButtonState }
 				className="over-form-button"
 			/>
 		</OverForm>

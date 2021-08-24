@@ -9,6 +9,7 @@ import request from "../../util/request";
 import { ALL_CARDS_PILE } from '../../util/constants';
 
 import store from '../../app/store'
+import makeMarkDown from "../../util/makeMarkDown";
 
 function GameForm(props) {
 	var dispatch = useDispatch();
@@ -119,7 +120,7 @@ function GameForm(props) {
 				<br/>
 				{ moveCardButtonsComponent }
 				{ cardComponent }
-				{ displayTranslate ? <p>{ card.translatedWord }</p> : null }
+				{ displayTranslate ? <p dangerouslySetInnerHTML={ makeMarkDown(card.translatedWord) } /> : null }
 			</div>
 		</OverForm>
 	);

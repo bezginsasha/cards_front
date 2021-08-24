@@ -23,6 +23,8 @@
 }
 .over-input-textarea {
 	width: 350px;
+	margin: 0 auto 20px;
+	text-align: left;
 }
 
 .over-form-button {
