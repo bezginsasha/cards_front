@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import './CommonForm.css';
@@ -120,7 +120,12 @@ function GameForm(props) {
 				<br/>
 				{ moveCardButtonsComponent }
 				{ cardComponent }
-				{ displayTranslate ? <p dangerouslySetInnerHTML={ makeMarkDown(card.translatedWord) } /> : null }
+				{ displayTranslate ? (
+					<React.Fragment>
+						<hr/>
+						<p dangerouslySetInnerHTML={ makeMarkDown(card.translatedWord) } />
+					</React.Fragment>
+				) : null }
 			</div>
 		</OverForm>
 	);
