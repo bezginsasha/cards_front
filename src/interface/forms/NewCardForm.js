@@ -28,20 +28,21 @@ function NewCardForm(props) {
 			method: 'POST',
 			body: form,
 			callback: data => {
-				console.log(data.id);
-				var card = {
-					id: data.id,
-					originalWord: originalWord,
-					translatedWord: translatedWord,
-					pileName: 'default'
-				};
-
-				dispatch(insertCard(card));
-				dispatch(clearWords());
+				if (data.result === 'ok') {
+					var card = {
+						id: data.id,
+						originalWord: originalWord,
+						translatedWord: translatedWord,
+						pileName: 'default'
+					};
+					dispatch(insertCard(card));
+					dispatch(clearWords());
+					props.closeForm();
+				} else {
+					alert(data.result);
+				}
 			}
 		});
-
-		props.closeForm();
 	}
 
 	function originalWordInputHandler(event) {

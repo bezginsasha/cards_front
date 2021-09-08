@@ -34,17 +34,19 @@ function UpdateCardForm(props) {
 			method: 'POST',
 			body: form,
 			callback: data => {
-				console.log(data);
-				var card = {
-					id: props.cardId,
-					originalWord: originalWord,
-					translatedWord: translatedWord
-				};
-
-				dispatch(updateCard(card));
+				if (data.result === 'ok') {
+					var card = {
+						id: props.cardId,
+						originalWord: originalWord,
+						translatedWord: translatedWord
+					};
+					dispatch(updateCard(card));
+					props.closeForm();
+				} else {
+					alert(data.result);
+				}
 			}
 		});
-		props.closeForm();
 	}
 
 	function changeRenderButtonState() {
