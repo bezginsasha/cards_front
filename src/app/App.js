@@ -14,6 +14,7 @@ import PilesForm from '../interface/forms/PilesForm/PilesForm'
 import AccountForm from '../interface/forms/AccountForm';
 import GameForm from '../interface/forms/GameForm';
 import HelpForm from '../interface/forms/HelpForm';
+import ImportForm from '../interface/forms/ImportForm';
 
 import { ALL_CARDS_PILE, FORMS } from '../util/constants';
 import updateCardsAndPiles from "../util/updateCardsAndPiles";
@@ -82,6 +83,9 @@ function App() {
 			break;
 		case FORMS.help:
 			currentFormElement = <HelpForm title={ FORMS.help } />;
+			break;
+		case FORMS.import:
+			currentFormElement = <ImportForm title={ FORMS.import } closeForm={ closeForm } />;
 			break;
 		default:
 			currentFormElement = null
