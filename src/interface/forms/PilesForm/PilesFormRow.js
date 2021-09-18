@@ -39,11 +39,6 @@ function PilesFormRow(props) {
 			var oldPileName = props.name;
 			var newPileName = pileName;
 
-			dispatch(updatePile({
-				oldName: oldPileName,
-				newName: newPileName
-			}));
-
 			form.set('oldPileName', oldPileName);
 			form.set('newPileName', newPileName);
 
@@ -51,18 +46,32 @@ function PilesFormRow(props) {
 				url: 'piles/update',
 				method: 'POST',
 				body: form,
-				callback: (data) => console.log(data)
+				callback: (data) => date => {
+					if (data.result === 'ok') {
+						dispatch(updatePile({
+							oldName: oldPileName,
+							newName: newPileName
+						}));
+					} else {
+						alert(data.result);
+					}
+
+				}
 			});
 		} else {
-			dispatch(insertPile(pileName));
-
 			form.set('pileName', pileName);
 
 			request({
 				url: 'piles/add',
 				method: 'POST',
 				body: form,
-				callback: (data) => console.log(data)
+				callback: (data) => date => {
+					if (data.result === 'ok') {
+						dispatch(insertPile(pileName));
+					} else {
+						alert(data.result);
+					}
+				}
 			});
 		}
 	}
