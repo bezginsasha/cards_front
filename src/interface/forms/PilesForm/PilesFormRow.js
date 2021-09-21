@@ -46,7 +46,7 @@ function PilesFormRow(props) {
 				url: 'piles/update',
 				method: 'POST',
 				body: form,
-				callback: (data) => date => {
+				callback: data => {
 					if (data.result === 'ok') {
 						dispatch(updatePile({
 							oldName: oldPileName,
@@ -65,7 +65,7 @@ function PilesFormRow(props) {
 				url: 'piles/add',
 				method: 'POST',
 				body: form,
-				callback: (data) => date => {
+				callback: data => {
 					if (data.result === 'ok') {
 						dispatch(insertPile(pileName));
 					} else {
